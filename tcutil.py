@@ -92,16 +92,7 @@ def plot_hist(pivoted, names, Emin=0, baseIdx=0):
     plt.ylabel("Counts")
 
 def group_by_wafer(tcs):
-    u = tcs.waferu - ak.min(tcs.waferu)
-    v = tcs.waferv - ak.min(tcs.waferv)
-    l = tcs.layer - ak.min(tcs.layer)
-    z = tcs.zside
-
-    maxu = ak.max(u)
-    maxv = ak.max(v)
-    maxl = ak.max(l)
-
-    sortvar = z*(u + v*maxu + l*maxu*maxv)
+    sortvar = get_waferid(tcs)
     sortidx = ak.argsort(sortvar, axis=-1)
 
     sortvar = sortvar[sortidx]
@@ -135,7 +126,7 @@ def get_waferid(tcs):
     v = tcs.waferv
     l = tcs.layer
     z = tcs.zside
-    return z * (l + 60*(u + 10) + 60*20*(v + 10))
+    return z * (l + 60*(u + 20) + 60*40*(v + 20))
 
 def get_train_E(tcs, kind):
     if kind=='ADC':
@@ -156,7 +147,8 @@ def get_train_E(tcs, kind):
 
 
 defaulttree='FloatingpointThreshold0DummyHistomaxDummynTuple/HGCalTriggerNtuple'
-def get_training_data(fname, treename=defaulttree, kind='MIPT'):
+def get_training_data(fname, treename=defaulttree, kind='MIPT',
+                      entry_start=0, entry_stop=None):
     ''' 
     get training dataframe from file
 
@@ -179,7 +171,9 @@ def get_training_data(fname, treename=defaulttree, kind='MIPT'):
     #get nanoevents object
     evts = NanoEventsFactory.from_root(fname, 
                                        treepath=treename, 
-                                       schemaclass=NanoAODSchema).events()
+                                       schemaclass=NanoAODSchema,
+                                       entry_stop=entry_stop, 
+                                       entry_start=entry_start).events()
     #get only tcs from silicon wafers
     tcs = get_siwafers(evts) 
     #convert u,v to index from 0 to 47 (inclusive)
@@ -199,7 +193,9 @@ def get_training_data(fname, treename=defaulttree, kind='MIPT'):
                      'layer' : tcs.layer,
                      'etaEwt': tcs.eta * E, #used for energy-weighted eta
                      'phiEwt': tcs.phi * E, #used for energy-weighted phi
-                     'simenergy': tcs.simenergy})
+                     'simenergy': tcs.simenergy,
+                     'cellu' : tcs.cellu,
+                     'cellv' : tcs.cellv})
 
     #pivot dataframe to organize with each wafer in one row, and the columns=the 0-47 trainidx
     pivoted = get_pivoted(zipped, kind='waferevent', columns='trainidx')['E']
