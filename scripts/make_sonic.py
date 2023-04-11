@@ -34,8 +34,8 @@ decoder = ModuleListModule(model.decoders)
 encoder = torch.jit.script(encoder)
 decoder = torch.jit.script(decoder)
 
-print(encoder)
-print(decoder)
+#print(encoder)
+#print(decoder)
 
 os.makedirs(args.outdir, exist_ok=True)
 os.makedirs(os.path.join(args.outdir, args.name+"_encode", "1"))
@@ -62,7 +62,7 @@ output [
   dims: [16]
 }]
 '''%(args.name+"_encode")
-print(encode_str)
+#print(encode_str)
 
 decode_str = '''
 name: "%s"
@@ -81,7 +81,7 @@ output [
   dims: [48]
 }]
 '''%(args.name+"_decode")
-print(decode_str)
+#print(decode_str)
 
 ensemble_str = '''
 name: "%s"
@@ -132,7 +132,7 @@ ensemble_scheduling{
   }
 ]}
 '''%(args.name+"_ensemble", args.name+"_encode", args.name+"_decode")
-print(ensemble_str)
+#print(ensemble_str)
 
 
 with open(os.path.join(args.outdir, args.name+"_encode", "config.pbtxt"), 'w') as f:
