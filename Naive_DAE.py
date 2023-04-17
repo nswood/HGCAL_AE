@@ -29,7 +29,8 @@ class DAE(nn.Module):
             encoder_biases.append(nn.Parameter(model.h_bias.clone()))
             decoders.append(nn.Parameter(model.W.clone()))
             decoder_biases.append(nn.Parameter(model.v_bias.clone()))
-
+        
+        
         # build encoders and decoders
         self.encoders = nn.ParameterList(encoders)
         self.encoder_biases = nn.ParameterList(encoder_biases)
@@ -140,6 +141,7 @@ class Naive_DAE(nn.Module):
                 prev_layer = layer
             self.encoders = nn.ModuleList(encoders)
             self.decoders = nn.ModuleList(reversed(decoders))
+            self.decoders = nn.ModuleList(reversed([nn.ReLU()]+decoders))
         else:
             encoders = []
             decoders = []
