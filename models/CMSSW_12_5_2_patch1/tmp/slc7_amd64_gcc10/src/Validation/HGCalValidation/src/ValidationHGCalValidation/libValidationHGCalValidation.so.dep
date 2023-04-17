@@ -1,0 +1,12 @@
+tmp/slc7_amd64_gcc10/src/Validation/HGCalValidation/src/ValidationHGCalValidation/a/ValidationHGCalValidation_xr.cc: \
+ src/Validation/HGCalValidation/src/classes.h \
+ src/Validation/HGCalValidation/src/classes.h \
+ src/Validation/HGCalValidation/interface/ValidHit.h \
+
+tmp/slc7_amd64_gcc10/src/Validation/HGCalValidation/src/ValidationHGCalValidation/HGVHistoProducerAlgo.cc.o: \
+ src/Validation/HGCalValidation/src/HGVHistoProducerAlgo.cc \
+ src/Validation/HGCalValidation/interface/HGVHistoProducerAlgo.h \
+ src/DataFormats/ForwardDetId/interface/HGCalDetId.h \
+ src/DataFormats/ForwardDetId/interface/ForwardSubdetector.h \
+ src/DataFormats/ForwardDetId/interface/HFNoseDetId.h \
+

@@ -1,0 +1,1 @@
+L1TriggerL1THGCalUtilitiesPlugins_selectors L1Trigger/L1THGCalUtilities/plugins/selectors/Dummy.cc L1Trigger/L1THGCalUtilities/plugins/selectors/HGC3DClusterGenMatchSelector.cc L1Trigger/L1THGCalUtilities/plugins/selectors/HGC3DClusterSimpleSelector.cc L1Trigger/L1THGCalUtilities/plugins/selectors/HGC3DClusterTMVASelector.cc

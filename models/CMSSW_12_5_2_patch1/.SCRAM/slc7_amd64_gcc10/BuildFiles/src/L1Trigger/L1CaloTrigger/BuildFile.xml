@@ -1,0 +1,12 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "L1TriggerL1CaloTrigger",
+  "USE": [
+    "FWCore/ParameterSet",
+    "clhep"
+  ]
+}

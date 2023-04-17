@@ -1,0 +1,52 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "ValidationHGCalValidationAuto": {
+        "FILES": "",
+        "TYPE": "lib"
+      }
+    }
+  },
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "USE": [
+    "DataFormats/ForwardDetId",
+    "DataFormats/HcalDetId",
+    "DataFormats/ParticleFlowCandidate",
+    "DataFormats/Common",
+    "DataFormats/L1THGCal",
+    "DetectorDescription/Core",
+    "DetectorDescription/DDCMS",
+    "DQMServices/Core",
+    "FWCore/Common",
+    "FWCore/Framework",
+    "FWCore/MessageLogger",
+    "FWCore/ParameterSet",
+    "FWCore/PluginManager",
+    "FWCore/ServiceRegistry",
+    "FWCore/Utilities",
+    "Geometry/HGCalCommonData",
+    "Geometry/HGCalGeometry",
+    "Geometry/Records",
+    "L1Trigger/L1THGCal",
+    "SimDataFormats/CaloHit",
+    "SimDataFormats/CaloTest",
+    "SimDataFormats/CaloAnalysis",
+    "SimDataFormats/GeneratorProducts",
+    "SimDataFormats/Track",
+    "SimDataFormats/ValidationFormats",
+    "SimG4Core/Notification",
+    "SimG4Core/Watcher",
+    "SimG4CMS/Calo",
+    "RecoLocalCalo/HGCalRecAlgos",
+    "Validation/HGCalValidation",
+    "geant4core",
+    "dd4hep",
+    "clhep",
+    "hepmc",
+    "cuda"
+  ]
+}

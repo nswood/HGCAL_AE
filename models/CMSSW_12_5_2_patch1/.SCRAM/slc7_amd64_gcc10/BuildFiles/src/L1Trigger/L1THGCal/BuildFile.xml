@@ -1,0 +1,26 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "FLAGS": {
+    "ADD_SUBDIR": [
+      "1"
+    ]
+  },
+  "NAME": "L1TriggerL1THGCal",
+  "USE": [
+    "DataFormats/L1Trigger",
+    "FWCore/Framework",
+    "Geometry/HGCalGeometry",
+    "Geometry/CaloTopology",
+    "Geometry/Records",
+    "DataFormats/L1THGCal",
+    "SimDataFormats/CaloTest",
+    "PhysicsTools/TensorFlow",
+    "HeterogeneousCore/SonicTriton",
+    "CommonTools/Utils",
+    "json"
+  ]
+}

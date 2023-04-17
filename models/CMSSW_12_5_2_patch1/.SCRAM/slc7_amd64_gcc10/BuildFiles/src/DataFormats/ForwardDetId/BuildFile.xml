@@ -1,0 +1,12 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "DataFormatsForwardDetId",
+  "USE": [
+    "FWCore/Utilities",
+    "DataFormats/DetId"
+  ]
+}

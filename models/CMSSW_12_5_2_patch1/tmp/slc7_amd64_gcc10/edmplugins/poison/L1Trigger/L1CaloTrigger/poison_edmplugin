@@ -1,0 +1,16 @@
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so L1CaloJetHTTProducer CMS%EDM%Framework%Module
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so L1CaloJetHTTProducer CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so L1CaloJetProducer CMS%EDM%Framework%Module
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so L1CaloJetProducer CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so L1EGCrystalClusterEmulatorProducer CMS%EDM%Framework%Module
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so L1EGCrystalClusterEmulatorProducer CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so L1TS2PFJetInputPatternWriter CMS%EDM%Framework%Module
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so L1TS2PFJetInputPatternWriter CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so L1TowerCalibrator CMS%EDM%Framework%Module
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so L1TowerCalibrator CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so Phase1L1TJetCalibrator CMS%EDM%Framework%Module
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so Phase1L1TJetCalibrator CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so Phase1L1TJetProducer CMS%EDM%Framework%Module
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so Phase1L1TJetProducer CMS%EDM%Framework%ParameterSet%Description
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so Phase1L1TJetSumsProducer CMS%EDM%Framework%Module
+plugin-poisoned-L1TriggerL1CaloTriggerAuto.so Phase1L1TJetSumsProducer CMS%EDM%Framework%ParameterSet%Description

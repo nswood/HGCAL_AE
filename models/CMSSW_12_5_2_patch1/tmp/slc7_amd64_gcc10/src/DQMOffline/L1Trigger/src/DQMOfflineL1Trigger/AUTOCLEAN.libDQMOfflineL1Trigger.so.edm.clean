@@ -1,0 +1,2 @@
+01:/usr/bin/rm -f lib/slc7_amd64_gcc10/pluginDQMOfflineL1Trigger.so lib/slc7_amd64_gcc10/DQMOfflineL1Trigger.edmplugin
+90:edmPluginRefresh lib/slc7_amd64_gcc10

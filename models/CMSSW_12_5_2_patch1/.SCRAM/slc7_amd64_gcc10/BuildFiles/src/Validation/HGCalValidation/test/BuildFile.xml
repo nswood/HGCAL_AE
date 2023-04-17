@@ -1,0 +1,31 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "testValidationHGCalValidation": {
+        "FILES": "*.cc",
+        "TYPE": "lib"
+      }
+    }
+  },
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "USE": [
+    "DataFormats/ForwardDetId",
+    "FWCore/Framework",
+    "FWCore/ParameterSet",
+    "FWCore/MessageLogger",
+    "Geometry/HGCalCommonData",
+    "Geometry/HGCalGeometry",
+    "Geometry/Records",
+    "SimDataFormats/CaloHit",
+    "SimDataFormats/CaloTest",
+    "SimG4CMS/Calo",
+    "RecoLocalCalo/HGCalRecAlgos",
+    "geant4core",
+    "clhep",
+    "hepmc"
+  ]
+}

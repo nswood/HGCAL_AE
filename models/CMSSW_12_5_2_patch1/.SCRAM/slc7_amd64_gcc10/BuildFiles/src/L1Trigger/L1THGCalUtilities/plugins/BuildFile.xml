@@ -1,0 +1,38 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "L1TriggerL1THGCalUtilitiesPlugins_calotruth": {
+        "FILES": "CaloTruthCellsProducer.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "FWCore/Framework",
+          "FWCore/ParameterSet",
+          "Geometry/Records",
+          "SimDataFormats/CaloAnalysis",
+          "DataFormats/L1THGCal",
+          "L1Trigger/L1THGCal"
+        ]
+      },
+      "L1TriggerL1THGCalUtilitiesPlugins_selectors": {
+        "FILES": "selectors/*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "L1Trigger/L1THGCal",
+          "CommonTools/Utils",
+          "CommonTools/MVAUtils",
+          "roottmva"
+        ]
+      }
+    }
+  }
+}

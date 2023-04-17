@@ -1,0 +1,16 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "L1TriggerL1THGCalUtilities",
+  "USE": [
+    "FWCore/Framework",
+    "DataFormats/Common",
+    "DataFormats/L1THGCal",
+    "FWCore/ParameterSet",
+    "FWCore/PluginManager",
+    "SimDataFormats/CaloAnalysis"
+  ]
+}

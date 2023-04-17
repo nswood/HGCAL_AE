@@ -1,0 +1,26 @@
+[ libDataFormatsForwardDetId.so ]
+# List of selected classes
+class BTLDetId
+class ETLDetId
+class FastTimeDetId
+class HFNoseDetId
+class HFNoseTriggerDetId
+class HGCEEDetId
+class HGCHEDetId
+class HGCScintillatorDetId
+class HGCSiliconDetId
+class HGCTriggerDetId
+class HGCalDetId
+class MTDDetId
+header DataFormats/ForwardDetId/interface/BTLDetId.h
+header DataFormats/ForwardDetId/interface/ETLDetId.h
+header DataFormats/ForwardDetId/interface/FastTimeDetId.h
+header DataFormats/ForwardDetId/interface/HFNoseDetId.h
+header DataFormats/ForwardDetId/interface/HFNoseTriggerDetId.h
+header DataFormats/ForwardDetId/interface/HGCEEDetId.h
+header DataFormats/ForwardDetId/interface/HGCHEDetId.h
+header DataFormats/ForwardDetId/interface/HGCScintillatorDetId.h
+header DataFormats/ForwardDetId/interface/HGCSiliconDetId.h
+header DataFormats/ForwardDetId/interface/HGCTriggerDetId.h
+header DataFormats/ForwardDetId/interface/HGCalDetId.h
+header DataFormats/ForwardDetId/interface/MTDDetId.h

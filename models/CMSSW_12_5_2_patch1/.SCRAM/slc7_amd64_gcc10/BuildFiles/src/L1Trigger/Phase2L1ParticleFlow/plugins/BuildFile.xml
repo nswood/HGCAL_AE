@@ -1,0 +1,28 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "L1TriggerPhase2L1ParticleFlowAuto": {
+        "FILES": "",
+        "TYPE": "lib"
+      }
+    }
+  },
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "USE": [
+    "CalibFormats/CaloTPG",
+    "DataFormats/HcalDetId",
+    "DataFormats/HcalDigi",
+    "DataFormats/JetReco",
+    "FWCore/PluginManager",
+    "L1Trigger/L1TCalorimeter",
+    "L1Trigger/Phase2L1ParticleFlow",
+    "MagneticField/Engine",
+    "MagneticField/Records",
+    "CommonTools/Utils",
+    "CommonTools/UtilAlgos"
+  ]
+}

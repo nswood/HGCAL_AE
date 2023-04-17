@@ -1,0 +1,19 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "DataFormatsL1THGCal",
+  "USE": [
+    "DataFormats/Common",
+    "DataFormats/L1Trigger",
+    "DataFormats/DetId",
+    "DataFormats/ForwardDetId",
+    "DataFormats/GeometryVector",
+    "FWCore/Utilities",
+    "FWCore/MessageLogger",
+    "rootrflx",
+    "boost"
+  ]
+}

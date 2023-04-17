@@ -1,0 +1,29 @@
+{
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "DQMOfflineL1Trigger",
+  "USE": [
+    "FWCore/Framework",
+    "FWCore/ParameterSet",
+    "DQMServices/Core",
+    "DataFormats/L1Trigger",
+    "DataFormats/L1GlobalTrigger",
+    "DataFormats/MuonReco",
+    "DataFormats/TauReco",
+    "DataFormats/METReco",
+    "DataFormats/JetReco",
+    "CondFormats/DataRecord",
+    "CondFormats/L1TObjects",
+    "L1Trigger/GlobalTriggerAnalyzer",
+    "L1Trigger/Phase2L1ParticleFlow",
+    "TrackingTools/TransientTrack",
+    "TrackingTools/TrajectoryState",
+    "HLTrigger/HLTcore",
+    "DQM/L1TMonitor",
+    "MuonAnalysis/MuonAssociators",
+    "SimDataFormats/TrackingAnalysis"
+  ]
+}

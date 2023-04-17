@@ -1,0 +1,35 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "FireworksCaloPlugins": {
+        "FILES": "*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "DataFormats/CaloRecHit",
+          "DataFormats/CaloTowers",
+          "DataFormats/EcalDetId",
+          "DataFormats/EcalRecHit",
+          "DataFormats/HcalRecHit",
+          "DataFormats/JetReco",
+          "DataFormats/L1Trigger",
+          "DataFormats/L1THGCal",
+          "DataFormats/METReco",
+          "DataFormats/TauReco",
+          "DataFormats/TrackReco",
+          "DataFormats/HGCalReco",
+          "Fireworks/Calo",
+          "Fireworks/Core",
+          "rootinteractive",
+          "rooteve",
+          "rootrgl",
+          "rootgeom"
+        ]
+      }
+    }
+  }
+}

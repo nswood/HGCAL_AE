@@ -1,0 +1,30 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "FLAGS": {
+    "ADD_SUBDIR": [
+      "1"
+    ]
+  },
+  "NAME": "L1TriggerPhase2L1ParticleFlow",
+  "USE": [
+    "FWCore/Framework",
+    "FWCore/ParameterSet",
+    "FWCore/Utilities",
+    "L1Trigger/L1THGCal",
+    "DataFormats/L1TParticleFlow",
+    "DataFormats/L1TCorrelator",
+    "CommonTools/BaseParticlePropagator",
+    "DataFormats/ParticleFlowReco",
+    "CommonTools/Utils",
+    "CommonTools/MVAUtils",
+    "L1Trigger/DemonstratorTools",
+    "PhysicsTools/TensorFlow",
+    "tensorflow",
+    "roottmva",
+    "hls"
+  ]
+}

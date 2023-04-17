@@ -1,0 +1,9 @@
+tmp/slc7_amd64_gcc10/src/DataFormats/ForwardDetId/test/testHFNoseDetId/testHFNoseDetId.cc.o: \
+ src/DataFormats/ForwardDetId/test/testHFNoseDetId.cc \
+ src/DataFormats/ForwardDetId/interface/HFNoseDetId.h \
+ src/DataFormats/ForwardDetId/interface/ForwardSubdetector.h \
+ src/DataFormats/ForwardDetId/interface/HFNoseTriggerDetId.h \
+ src/DataFormats/ForwardDetId/interface/HGCalTriggerDetId.h \
+ src/DataFormats/ForwardDetId/interface/HGCSiliconDetId.h \
+ src/DataFormats/ForwardDetId/interface/HFNoseDetIdToModule.h
+

@@ -1,0 +1,12 @@
+{ decls }
+namespace std {  }
+namespace edm {  }
+namespace edm { template <typename T> class Wrapper; }
+
+[ libValidationHGCalValidation.so ]
+# List of selected classes
+class ValidHit
+class edm::Wrapper<std::vector<ValidHit> >
+class edm::Wrapper<vector<ValidHit> >
+class vector<ValidHit>
+header Validation/HGCalValidation/interface/ValidHit.h

@@ -1,0 +1,29 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "L1TriggerL1THGCalUtilitiesTest_ntuples": {
+        "FILES": "ntuples/*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "L1Trigger/L1THGCal",
+          "L1Trigger/L1THGCalUtilities",
+          "CommonTools/UtilAlgos",
+          "SimDataFormats/CaloTest",
+          "DataFormats/JetReco",
+          "SimDataFormats/PileupSummaryInfo",
+          "SimDataFormats/GeneratorProducts",
+          "TrackPropagation/RungeKutta",
+          "FastSimulation/Event",
+          "MagneticField/Engine",
+          "MagneticField/Records",
+          "heppdt"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "CMSSW_BASE": "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2",
+  "CMSSW_BINDIR": "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2/bin/slc7_amd64_gcc10",
+  "INCLUDE": [
+    "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2/src",
+    "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2/include/slc7_amd64_gcc10/include"
+  ],
+  "LIBDIR": [
+    "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2/biglib/slc7_amd64_gcc10",
+    "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2/lib/slc7_amd64_gcc10"
+  ],
+  "RUNTIME": {
+    "CMSSW_FULL_RELEASE_BASE": [
+      "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2"
+    ],
+    "PATH:LD_LIBRARY_PATH": [
+      "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2/biglib/slc7_amd64_gcc10",
+      "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2/lib/slc7_amd64_gcc10"
+    ],
+    "PATH:PATH": [
+      "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2/bin/slc7_amd64_gcc10"
+    ],
+    "PATH:PYTHON3PATH": [
+      "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2/lib/slc7_amd64_gcc10"
+    ],
+    "PATH:ROOT_INCLUDE_PATH": [
+      "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2/src",
+      "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw/CMSSW_12_5_2/include/slc7_amd64_gcc10/include"
+    ]
+  },
+  "SCRAM_PROJECT": 1,
+  "TOOLNAME": "cmssw",
+  "TOOLVERSION": "CMSSW_12_5_2",
+  "USE": [
+    "root_cxxdefaults"
+  ],
+  "VARIABLES": [
+    "CMSSW_BASE",
+    "LIBDIR",
+    "CMSSW_BINDIR",
+    "INCLUDE"
+  ]
+}

@@ -1,0 +1,16 @@
+
+name: "dt_1_greater_0_250_100_encode"
+platform: "pytorch_libtorch"
+max_batch_size: 100000000
+input [
+{
+  name: "CALQ__0"
+  data_type: TYPE_FP32
+  dims: [48]
+}]
+output [
+{
+  name: "ECON__0"
+  data_type: TYPE_FP32
+  dims: [16]
+}]

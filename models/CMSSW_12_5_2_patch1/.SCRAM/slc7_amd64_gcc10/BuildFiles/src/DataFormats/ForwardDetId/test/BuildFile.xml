@@ -1,0 +1,17 @@
+{
+  "BUILDPRODUCTS": {
+    "BIN": {
+      "testHFNoseDetId": {
+        "FILES": "testHFNoseDetId.cc",
+        "TYPE": "bin"
+      },
+      "testHGCDetId": {
+        "FILES": "testHGCDetId.cc",
+        "TYPE": "bin"
+      }
+    }
+  },
+  "USE": [
+    "DataFormats/ForwardDetId"
+  ]
+}

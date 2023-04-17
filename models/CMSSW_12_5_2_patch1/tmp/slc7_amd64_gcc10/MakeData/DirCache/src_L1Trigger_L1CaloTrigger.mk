@@ -1,0 +1,2 @@
+ALL_PACKAGES += L1Trigger/L1CaloTrigger
+subdirs_src_L1Trigger_L1CaloTrigger := src_L1Trigger_L1CaloTrigger_plugins src_L1Trigger_L1CaloTrigger_python src_L1Trigger_L1CaloTrigger_src src_L1Trigger_L1CaloTrigger_test
