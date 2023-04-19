@@ -1,8 +1,8 @@
 tmp/slc7_amd64_gcc10/src/Fireworks/Calo/src/FireworksCalo/FWECALDetailViewBuilder.cc.o: \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/Fireworks/Calo/src/FWECALDetailViewBuilder.cc \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/Fireworks/Calo/src/FWECALDetailViewBuilder.cc \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/Fireworks/Core/interface/FWDetailViewBase.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/Fireworks/Core/interface/FWSimpleProxyHelper.h \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/Fireworks/Calo/interface/FWECALDetailViewBuilder.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/Fireworks/Calo/interface/FWECALDetailViewBuilder.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/DetId/interface/DetId.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/EcalRecHit/interface/EcalRecHitCollections.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/Common/interface/SortedCollection.h \
@@ -79,7 +79,7 @@ tmp/slc7_amd64_gcc10/src/Fireworks/Calo/src/FireworksCalo/FWECALDetailViewBuilde
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/CaloRecHit/interface/CaloCluster.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/Math/interface/Point3D.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/CaloRecHit/interface/CaloID.h \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/Fireworks/Calo/interface/FWBoxRecHit.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/Fireworks/Calo/interface/FWBoxRecHit.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/Fireworks/Core/interface/FWViewContext.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/external/sigcpp/3.2.0-03a2cb8734109cfe0079af5f112cd182/include/sigc++-3.0/sigc++/sigc++.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/external/sigcpp/3.2.0-03a2cb8734109cfe0079af5f112cd182/include/sigc++-3.0/sigc++/signal.h \
