@@ -1,0 +1,2 @@
+01:/usr/bin/rm -f biglib/slc7_amd64_gcc10/Simulation.edmplugin biglib/slc7_amd64_gcc10/pluginSimulation.so
+90:edmPluginRefresh biglib/slc7_amd64_gcc10

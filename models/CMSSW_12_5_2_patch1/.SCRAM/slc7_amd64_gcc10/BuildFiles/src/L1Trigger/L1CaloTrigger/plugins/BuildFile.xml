@@ -1,0 +1,34 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "L1TriggerL1CaloTriggerAuto": {
+        "FILES": "",
+        "TYPE": "lib"
+      }
+    }
+  },
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "USE": [
+    "FWCore/Framework",
+    "Geometry/CaloGeometry",
+    "Geometry/HcalTowerAlgo",
+    "Geometry/EcalAlgo",
+    "DataFormats/L1TCalorimeterPhase2",
+    "DataFormats/L1Trigger",
+    "DataFormats/HcalDetId",
+    "DataFormats/EcalDigi",
+    "DataFormats/HcalDigi",
+    "DataFormats/JetReco",
+    "CalibFormats/CaloTPG",
+    "L1Trigger/L1CaloTrigger",
+    "DataFormats/L1THGCal",
+    "L1Trigger/L1TCalorimeter",
+    "FWCore/ParameterSet",
+    "root",
+    "boost"
+  ]
+}

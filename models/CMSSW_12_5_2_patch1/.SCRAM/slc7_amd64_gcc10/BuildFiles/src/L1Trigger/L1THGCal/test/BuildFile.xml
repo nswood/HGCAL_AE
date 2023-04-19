@@ -1,0 +1,21 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "testL1TriggerL1THGCal": {
+        "FILES": "HGCalTriggerGeomTesterV9Imp2.cc,HGCalTriggerGeomTesterV9Imp3.cc,HGCalBackendStage1ParameterExtractor.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib"
+      }
+    }
+  },
+  "USE": [
+    "Geometry/HGCalGeometry",
+    "L1Trigger/L1THGCal",
+    "Geometry/Records",
+    "CommonTools/UtilAlgos"
+  ]
+}

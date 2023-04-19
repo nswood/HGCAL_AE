@@ -1,0 +1,2 @@
+01:/usr/bin/rm -f lib/slc7_amd64_gcc10/plugintestL1TriggerL1THGCal.so lib/slc7_amd64_gcc10/testL1TriggerL1THGCal.edmplugin
+90:edmPluginRefresh lib/slc7_amd64_gcc10

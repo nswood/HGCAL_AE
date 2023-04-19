@@ -1,0 +1,26 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "FireworksCalo",
+  "USE": [
+    "DataFormats/CaloRecHit",
+    "DataFormats/CaloTowers",
+    "DataFormats/DetId",
+    "DataFormats/EcalDetId",
+    "DataFormats/EcalRecHit",
+    "DataFormats/EgammaReco",
+    "DataFormats/FWLite",
+    "DataFormats/JetReco",
+    "DataFormats/TauReco",
+    "Fireworks/Core",
+    "Fireworks/Tracks",
+    "boost_system",
+    "rootgpad",
+    "rootphysics",
+    "rooteve",
+    "rootgeom"
+  ]
+}

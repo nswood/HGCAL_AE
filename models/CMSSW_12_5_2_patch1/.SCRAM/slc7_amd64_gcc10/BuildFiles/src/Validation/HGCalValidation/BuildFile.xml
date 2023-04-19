@@ -1,0 +1,23 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "ValidationHGCalValidation"
+    ]
+  },
+  "NAME": "ValidationHGCalValidation",
+  "USE": [
+    "DataFormats/ForwardDetId",
+    "DataFormats/HepMCCandidate",
+    "DataFormats/ParticleFlowCandidate",
+    "DQMServices/Core",
+    "FWCore/Framework",
+    "FWCore/ParameterSet",
+    "FWCore/MessageLogger",
+    "SimDataFormats/CaloAnalysis",
+    "RecoLocalCalo/HGCalRecAlgos",
+    "RecoLocalCalo/HGCalRecProducers",
+    "geant4core",
+    "clhep",
+    "hepmc"
+  ]
+}

@@ -1,0 +1,9 @@
+tmp/slc7_amd64_gcc10/src/L1Trigger/L1THGCalUtilities/src/L1TriggerL1THGCalUtilities/a/L1TriggerL1THGCalUtilities_xr.cc: \
+ src/L1Trigger/L1THGCalUtilities/src/classes.h \
+ src/L1Trigger/L1THGCalUtilities/src/classes.h \
+ src/DataFormats/L1THGCal/interface/HGCalTriggerCell.h \
+
+tmp/slc7_amd64_gcc10/src/L1Trigger/L1THGCalUtilities/src/L1TriggerL1THGCalUtilities/HGCalTriggerNtupleBase.cc.o: \
+ src/L1Trigger/L1THGCalUtilities/src/HGCalTriggerNtupleBase.cc \
+ src/L1Trigger/L1THGCalUtilities/interface/HGCalTriggerNtupleBase.h \
+

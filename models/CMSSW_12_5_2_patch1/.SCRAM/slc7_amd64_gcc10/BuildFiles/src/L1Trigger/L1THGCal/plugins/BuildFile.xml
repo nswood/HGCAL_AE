@@ -1,0 +1,48 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "L1TriggerL1THGCalPlugins": {
+        "FILES": "*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "L1Trigger/L1THGCal",
+          "Geometry/Records"
+        ]
+      },
+      "L1TriggerL1THGCalPlugins_fe_be": {
+        "FILES": "veryfrontend/*.cc, concentrator/*.cc, backend/*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "CommonTools/MVAUtils",
+          "Geometry/Records",
+          "rootcore",
+          "L1Trigger/L1THGCal",
+          "DataFormats/L1THGCal"
+        ]
+      },
+      "L1TriggerL1THGCalPlugins_geometries": {
+        "FILES": "geometries/*.cc",
+        "FLAGS": {
+          "EDM_PLUGIN": [
+            "1"
+          ]
+        },
+        "TYPE": "lib",
+        "USE": [
+          "L1Trigger/L1THGCal",
+          "tbb"
+        ]
+      }
+    }
+  }
+}
