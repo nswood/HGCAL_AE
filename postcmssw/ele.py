@@ -1,5 +1,6 @@
 import awkward as ak
 import numpy as np
+import pandas as pd
 from .util import cut_var
 
 def get_evtcut(ne, cuts={'eta' : (1.57, np.inf)}):
@@ -30,7 +31,7 @@ def get_genele(ne):
     elepos.index.name = 'event'
     eleneg.index.name = 'event'
 
-    return elepos.append(eleneg)
+    return pd.concat([elepos, eleneg], ignore_index = True)
 
 def get_recoele(ne):
     #treat each side separately
@@ -63,7 +64,7 @@ def get_recoele(ne):
     elepos.index.name = 'event'
     eleneg.index.name = 'event'
 
-    return elepos.append(eleneg)
+    return  pd.concat([elepos, eleneg], ignore_index = True) 
 
 def get_recoele_l(ne_l):
     ele_l = []
