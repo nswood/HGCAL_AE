@@ -1,6 +1,6 @@
 tmp/slc7_amd64_gcc10/src/L1Trigger/L1THGCalUtilities/src/L1TriggerL1THGCalUtilities/HGCalTriggerNtupleBase.cc.o: \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCalUtilities/src/HGCalTriggerNtupleBase.cc \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCalUtilities/interface/HGCalTriggerNtupleBase.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCalUtilities/src/HGCalTriggerNtupleBase.cc \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCalUtilities/interface/HGCalTriggerNtupleBase.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/FWCore/Framework/interface/Event.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/Common/interface/BasicHandle.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/Provenance/interface/ProductID.h \

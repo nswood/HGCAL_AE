@@ -1,6 +1,6 @@
 tmp/slc7_amd64_gcc10/src/L1Trigger/L1THGCal/src/L1TriggerL1THGCal/HGCalVFECompressionImpl.cc.o: \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCal/src/HGCalVFECompressionImpl.cc \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCal/interface/HGCalVFECompressionImpl.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCal/src/HGCalVFECompressionImpl.cc \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCal/interface/HGCalVFECompressionImpl.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/FWCore/ParameterSet/interface/ParameterSet.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/Provenance/interface/ParameterSetID.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/Provenance/interface/Hash.h \

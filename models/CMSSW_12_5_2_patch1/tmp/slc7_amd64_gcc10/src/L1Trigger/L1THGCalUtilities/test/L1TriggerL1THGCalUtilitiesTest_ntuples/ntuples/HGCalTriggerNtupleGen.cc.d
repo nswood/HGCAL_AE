@@ -1,5 +1,5 @@
 tmp/slc7_amd64_gcc10/src/L1Trigger/L1THGCalUtilities/test/L1TriggerL1THGCalUtilitiesTest_ntuples/ntuples/HGCalTriggerNtupleGen.cc.o: \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCalUtilities/test/ntuples/HGCalTriggerNtupleGen.cc \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCalUtilities/test/ntuples/HGCalTriggerNtupleGen.cc \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/HepMCCandidate/interface/GenParticle.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/Candidate/interface/CompositeRefCandidateT.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/Candidate/interface/LeafCandidate.h \
@@ -146,7 +146,7 @@ tmp/slc7_amd64_gcc10/src/L1Trigger/L1THGCalUtilities/test/L1TriggerL1THGCalUtili
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/HcalDetId/interface/HcalDetId.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/DetId/interface/DetId.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/HcalDetId/interface/HcalSubdetector.h \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCalUtilities/interface/HGCalTriggerNtupleBase.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCalUtilities/interface/HGCalTriggerNtupleBase.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/FWCore/Framework/interface/Event.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/Common/interface/BasicHandle.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/Provenance/interface/Provenance.h \
@@ -261,10 +261,10 @@ tmp/slc7_amd64_gcc10/src/L1Trigger/L1THGCalUtilities/test/L1TriggerL1THGCalUtili
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/FWCore/PluginManager/interface/PluginManager.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/FWCore/PluginManager/interface/SharedLibrary.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/FWCore/Utilities/interface/concatenate.h \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCal/interface/HGCalTriggerTools.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCal/interface/HGCalTriggerTools.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/L1Trigger/interface/BXVector.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/L1Trigger/interface/BXVector.icc \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/ForwardSubdetector.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/ForwardSubdetector.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/GeometryVector/interface/GlobalPoint.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/Geometry/Records/interface/CaloGeometryRecord.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/FWCore/Framework/interface/EventSetupRecordImplementation.h \
@@ -326,10 +326,10 @@ tmp/slc7_amd64_gcc10/src/L1Trigger/L1THGCalUtilities/test/L1TriggerL1THGCalUtili
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/Geometry/Records/interface/PFastTimeRcd.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/Geometry/HGCalGeometry/interface/HGCalGeometry.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/Common/interface/AtomicPtrCache.h \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HFNoseDetId.h \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HGCalDetId.h \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HGCScintillatorDetId.h \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HGCSiliconDetId.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HFNoseDetId.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HGCalDetId.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HGCScintillatorDetId.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HGCSiliconDetId.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DetectorDescription/Core/interface/DDFilteredView.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DetectorDescription/Core/interface/DDRotationMatrix.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DetectorDescription/Core/interface/DDTranslation.h \
@@ -382,7 +382,7 @@ tmp/slc7_amd64_gcc10/src/L1Trigger/L1THGCalUtilities/test/L1TriggerL1THGCalUtili
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/Geometry/HGCalCommonData/interface/HGCalTypes.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/Geometry/HGCalCommonData/interface/HGCalWaferIndex.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/MagneticField/Engine/interface/MagneticField.h \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCal/interface/HGCalTriggerGeometryBase.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/L1Trigger/L1THGCal/interface/HGCalTriggerGeometryBase.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/TrackPropagation/RungeKutta/interface/defaultRKPropagator.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/TrackPropagation/RungeKutta/interface/RKPropagatorInS.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/TrackingTools/GeomPropagators/interface/Propagator.h \

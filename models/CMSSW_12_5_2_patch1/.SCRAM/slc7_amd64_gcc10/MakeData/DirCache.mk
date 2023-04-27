@@ -1,22 +1,3 @@
-ifeq ($(strip $(DataFormats/ForwardDetId)),)
-ALL_COMMONRULES += src_DataFormats_ForwardDetId_src
-src_DataFormats_ForwardDetId_src_parent := DataFormats/ForwardDetId
-src_DataFormats_ForwardDetId_src_INIT_FUNC := $$(eval $$(call CommonProductRules,src_DataFormats_ForwardDetId_src,src/DataFormats/ForwardDetId/src,LIBRARY))
-DataFormatsForwardDetId := self/DataFormats/ForwardDetId
-DataFormats/ForwardDetId := DataFormatsForwardDetId
-DataFormatsForwardDetId_files := $(patsubst src/DataFormats/ForwardDetId/src/%,%,$(wildcard $(foreach dir,src/DataFormats/ForwardDetId/src ,$(foreach ext,$(SRC_FILES_SUFFIXES),$(dir)/*.$(ext)))))
-DataFormatsForwardDetId_BuildFile    := $(WORKINGDIR)/cache/bf/src/DataFormats/ForwardDetId/BuildFile
-DataFormatsForwardDetId_LOC_USE := self cmssw  FWCore/Utilities DataFormats/DetId 
-DataFormatsForwardDetId_LCGDICTS  := x 
-DataFormatsForwardDetId_PRE_INIT_FUNC += $$(eval $$(call LCGDict,DataFormatsForwardDetId,src/DataFormats/ForwardDetId/src/classes.h,src/DataFormats/ForwardDetId/src/classes_def.xml,$(SCRAMSTORENAME_LIB),$(GENREFLEX_ARGS) $(root_EX_FLAGS_GENREFLEX_FAILES_ON_WARNS)))
-DataFormatsForwardDetId_EX_LIB   := DataFormatsForwardDetId
-DataFormatsForwardDetId_EX_USE   := $(foreach d,$(DataFormatsForwardDetId_LOC_USE),$(if $($(d)_EX_FLAGS_NO_RECURSIVE_EXPORT),,$d))
-DataFormatsForwardDetId_PACKAGE := self/src/DataFormats/ForwardDetId/src
-ALL_PRODS += DataFormatsForwardDetId
-DataFormatsForwardDetId_CLASS := LIBRARY
-DataFormats/ForwardDetId_forbigobj+=DataFormatsForwardDetId
-DataFormatsForwardDetId_INIT_FUNC        += $$(eval $$(call Library,DataFormatsForwardDetId,src/DataFormats/ForwardDetId/src,src_DataFormats_ForwardDetId_src,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),))
-endif
 ifeq ($(strip $(DataFormats/L1THGCal)),)
 ALL_COMMONRULES += src_DataFormats_L1THGCal_src
 src_DataFormats_L1THGCal_src_parent := DataFormats/L1THGCal
@@ -35,90 +16,6 @@ ALL_PRODS += DataFormatsL1THGCal
 DataFormatsL1THGCal_CLASS := LIBRARY
 DataFormats/L1THGCal_forbigobj+=DataFormatsL1THGCal
 DataFormatsL1THGCal_INIT_FUNC        += $$(eval $$(call Library,DataFormatsL1THGCal,src/DataFormats/L1THGCal/src,src_DataFormats_L1THGCal_src,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),))
-endif
-ifeq ($(strip $(L1Trigger/L1THGCal)),)
-ALL_COMMONRULES += src_L1Trigger_L1THGCal_src
-src_L1Trigger_L1THGCal_src_parent := L1Trigger/L1THGCal
-src_L1Trigger_L1THGCal_src_INIT_FUNC := $$(eval $$(call CommonProductRules,src_L1Trigger_L1THGCal_src,src/L1Trigger/L1THGCal/src,LIBRARY))
-L1TriggerL1THGCal := self/L1Trigger/L1THGCal
-L1Trigger/L1THGCal := L1TriggerL1THGCal
-L1TriggerL1THGCal_files := $(patsubst src/L1Trigger/L1THGCal/src/%,%,$(wildcard $(foreach dir,src/L1Trigger/L1THGCal/src src/L1Trigger/L1THGCal/src/backend src/L1Trigger/L1THGCal/src/backend_emulator src/L1Trigger/L1THGCal/src/concentrator src/L1Trigger/L1THGCal/src/veryfrontend,$(foreach ext,$(SRC_FILES_SUFFIXES),$(dir)/*.$(ext)))))
-L1TriggerL1THGCal_BuildFile    := $(WORKINGDIR)/cache/bf/src/L1Trigger/L1THGCal/BuildFile
-L1TriggerL1THGCal_LOC_USE := self cmssw  DataFormats/L1Trigger FWCore/Framework Geometry/HGCalGeometry Geometry/CaloTopology Geometry/Records DataFormats/L1THGCal SimDataFormats/CaloTest PhysicsTools/TensorFlow HeterogeneousCore/SonicTriton CommonTools/Utils json 
-L1TriggerL1THGCal_EX_LIB   := L1TriggerL1THGCal
-L1TriggerL1THGCal_EX_USE   := $(foreach d,$(L1TriggerL1THGCal_LOC_USE),$(if $($(d)_EX_FLAGS_NO_RECURSIVE_EXPORT),,$d))
-L1TriggerL1THGCal_PACKAGE := self/src/L1Trigger/L1THGCal/src
-ALL_PRODS += L1TriggerL1THGCal
-L1TriggerL1THGCal_CLASS := LIBRARY
-L1Trigger/L1THGCal_forbigobj+=L1TriggerL1THGCal
-L1TriggerL1THGCal_INIT_FUNC        += $$(eval $$(call Library,L1TriggerL1THGCal,src/L1Trigger/L1THGCal/src,src_L1Trigger_L1THGCal_src,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),))
-endif
-ifeq ($(strip $(L1TriggerL1THGCalPlugins)),)
-L1TriggerL1THGCalPlugins := self/src/L1Trigger/L1THGCal/plugins
-PLUGINS:=yes
-L1TriggerL1THGCalPlugins_files := $(patsubst src/L1Trigger/L1THGCal/plugins/%,%,$(foreach file,*.cc,$(eval xfile:=$(wildcard src/L1Trigger/L1THGCal/plugins/$(file)))$(if $(xfile),$(xfile),$(warning No such file exists: src/L1Trigger/L1THGCal/plugins/$(file). Please fix src/L1Trigger/L1THGCal/plugins/BuildFile.))))
-L1TriggerL1THGCalPlugins_BuildFile    := $(WORKINGDIR)/cache/bf/src/L1Trigger/L1THGCal/plugins/BuildFile
-L1TriggerL1THGCalPlugins_LOC_USE := self cmssw  L1Trigger/L1THGCal Geometry/Records 
-L1TriggerL1THGCalPlugins_PRE_INIT_FUNC += $$(eval $$(call edmPlugin,L1TriggerL1THGCalPlugins,L1TriggerL1THGCalPlugins,$(SCRAMSTORENAME_LIB),src/L1Trigger/L1THGCal/plugins))
-L1TriggerL1THGCalPlugins_PACKAGE := self/src/L1Trigger/L1THGCal/plugins
-ALL_PRODS += L1TriggerL1THGCalPlugins
-L1Trigger/L1THGCal_forbigobj+=L1TriggerL1THGCalPlugins
-L1TriggerL1THGCalPlugins_INIT_FUNC        += $$(eval $$(call Library,L1TriggerL1THGCalPlugins,src/L1Trigger/L1THGCal/plugins,src_L1Trigger_L1THGCal_plugins,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),edm))
-L1TriggerL1THGCalPlugins_CLASS := LIBRARY
-else
-$(eval $(call MultipleWarningMsg,L1TriggerL1THGCalPlugins,src/L1Trigger/L1THGCal/plugins))
-endif
-ifeq ($(strip $(L1TriggerL1THGCalPlugins_fe_be)),)
-L1TriggerL1THGCalPlugins_fe_be := self/src/L1Trigger/L1THGCal/plugins
-PLUGINS:=yes
-L1TriggerL1THGCalPlugins_fe_be_files := $(patsubst src/L1Trigger/L1THGCal/plugins/%,%,$(foreach file,veryfrontend/*.cc concentrator/*.cc backend/*.cc,$(eval xfile:=$(wildcard src/L1Trigger/L1THGCal/plugins/$(file)))$(if $(xfile),$(xfile),$(warning No such file exists: src/L1Trigger/L1THGCal/plugins/$(file). Please fix src/L1Trigger/L1THGCal/plugins/BuildFile.))))
-L1TriggerL1THGCalPlugins_fe_be_BuildFile    := $(WORKINGDIR)/cache/bf/src/L1Trigger/L1THGCal/plugins/BuildFile
-L1TriggerL1THGCalPlugins_fe_be_LOC_USE := self cmssw  CommonTools/MVAUtils Geometry/Records rootcore L1Trigger/L1THGCal DataFormats/L1THGCal 
-L1TriggerL1THGCalPlugins_fe_be_PRE_INIT_FUNC += $$(eval $$(call edmPlugin,L1TriggerL1THGCalPlugins_fe_be,L1TriggerL1THGCalPlugins_fe_be,$(SCRAMSTORENAME_LIB),src/L1Trigger/L1THGCal/plugins))
-L1TriggerL1THGCalPlugins_fe_be_PACKAGE := self/src/L1Trigger/L1THGCal/plugins
-ALL_PRODS += L1TriggerL1THGCalPlugins_fe_be
-L1Trigger/L1THGCal_forbigobj+=L1TriggerL1THGCalPlugins_fe_be
-L1TriggerL1THGCalPlugins_fe_be_INIT_FUNC        += $$(eval $$(call Library,L1TriggerL1THGCalPlugins_fe_be,src/L1Trigger/L1THGCal/plugins,src_L1Trigger_L1THGCal_plugins,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),edm))
-L1TriggerL1THGCalPlugins_fe_be_CLASS := LIBRARY
-else
-$(eval $(call MultipleWarningMsg,L1TriggerL1THGCalPlugins_fe_be,src/L1Trigger/L1THGCal/plugins))
-endif
-ifeq ($(strip $(L1TriggerL1THGCalPlugins_geometries)),)
-L1TriggerL1THGCalPlugins_geometries := self/src/L1Trigger/L1THGCal/plugins
-PLUGINS:=yes
-L1TriggerL1THGCalPlugins_geometries_files := $(patsubst src/L1Trigger/L1THGCal/plugins/%,%,$(foreach file,geometries/*.cc,$(eval xfile:=$(wildcard src/L1Trigger/L1THGCal/plugins/$(file)))$(if $(xfile),$(xfile),$(warning No such file exists: src/L1Trigger/L1THGCal/plugins/$(file). Please fix src/L1Trigger/L1THGCal/plugins/BuildFile.))))
-L1TriggerL1THGCalPlugins_geometries_BuildFile    := $(WORKINGDIR)/cache/bf/src/L1Trigger/L1THGCal/plugins/BuildFile
-L1TriggerL1THGCalPlugins_geometries_LOC_USE := self cmssw  L1Trigger/L1THGCal tbb 
-L1TriggerL1THGCalPlugins_geometries_PRE_INIT_FUNC += $$(eval $$(call edmPlugin,L1TriggerL1THGCalPlugins_geometries,L1TriggerL1THGCalPlugins_geometries,$(SCRAMSTORENAME_LIB),src/L1Trigger/L1THGCal/plugins))
-L1TriggerL1THGCalPlugins_geometries_PACKAGE := self/src/L1Trigger/L1THGCal/plugins
-ALL_PRODS += L1TriggerL1THGCalPlugins_geometries
-L1Trigger/L1THGCal_forbigobj+=L1TriggerL1THGCalPlugins_geometries
-L1TriggerL1THGCalPlugins_geometries_INIT_FUNC        += $$(eval $$(call Library,L1TriggerL1THGCalPlugins_geometries,src/L1Trigger/L1THGCal/plugins,src_L1Trigger_L1THGCal_plugins,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),edm))
-L1TriggerL1THGCalPlugins_geometries_CLASS := LIBRARY
-else
-$(eval $(call MultipleWarningMsg,L1TriggerL1THGCalPlugins_geometries,src/L1Trigger/L1THGCal/plugins))
-endif
-ALL_COMMONRULES += src_L1Trigger_L1THGCal_plugins
-src_L1Trigger_L1THGCal_plugins_parent := L1Trigger/L1THGCal
-src_L1Trigger_L1THGCal_plugins_INIT_FUNC += $$(eval $$(call CommonProductRules,src_L1Trigger_L1THGCal_plugins,src/L1Trigger/L1THGCal/plugins,PLUGINS))
-ifeq ($(strip $(L1Trigger/L1THGCalUtilities)),)
-ALL_COMMONRULES += src_L1Trigger_L1THGCalUtilities_src
-src_L1Trigger_L1THGCalUtilities_src_parent := L1Trigger/L1THGCalUtilities
-src_L1Trigger_L1THGCalUtilities_src_INIT_FUNC := $$(eval $$(call CommonProductRules,src_L1Trigger_L1THGCalUtilities_src,src/L1Trigger/L1THGCalUtilities/src,LIBRARY))
-L1TriggerL1THGCalUtilities := self/L1Trigger/L1THGCalUtilities
-L1Trigger/L1THGCalUtilities := L1TriggerL1THGCalUtilities
-L1TriggerL1THGCalUtilities_files := $(patsubst src/L1Trigger/L1THGCalUtilities/src/%,%,$(wildcard $(foreach dir,src/L1Trigger/L1THGCalUtilities/src ,$(foreach ext,$(SRC_FILES_SUFFIXES),$(dir)/*.$(ext)))))
-L1TriggerL1THGCalUtilities_BuildFile    := $(WORKINGDIR)/cache/bf/src/L1Trigger/L1THGCalUtilities/BuildFile
-L1TriggerL1THGCalUtilities_LOC_USE := self cmssw  FWCore/Framework DataFormats/Common DataFormats/L1THGCal FWCore/ParameterSet FWCore/PluginManager SimDataFormats/CaloAnalysis 
-L1TriggerL1THGCalUtilities_LCGDICTS  := x 
-L1TriggerL1THGCalUtilities_PRE_INIT_FUNC += $$(eval $$(call LCGDict,L1TriggerL1THGCalUtilities,src/L1Trigger/L1THGCalUtilities/src/classes.h,src/L1Trigger/L1THGCalUtilities/src/classes_def.xml,$(SCRAMSTORENAME_LIB),$(GENREFLEX_ARGS) $(root_EX_FLAGS_GENREFLEX_FAILES_ON_WARNS)))
-L1TriggerL1THGCalUtilities_EX_LIB   := L1TriggerL1THGCalUtilities
-L1TriggerL1THGCalUtilities_EX_USE   := $(foreach d,$(L1TriggerL1THGCalUtilities_LOC_USE),$(if $($(d)_EX_FLAGS_NO_RECURSIVE_EXPORT),,$d))
-L1TriggerL1THGCalUtilities_PACKAGE := self/src/L1Trigger/L1THGCalUtilities/src
-ALL_PRODS += L1TriggerL1THGCalUtilities
-L1TriggerL1THGCalUtilities_CLASS := LIBRARY
-L1Trigger/L1THGCalUtilities_forbigobj+=L1TriggerL1THGCalUtilities
-L1TriggerL1THGCalUtilities_INIT_FUNC        += $$(eval $$(call Library,L1TriggerL1THGCalUtilities,src/L1Trigger/L1THGCalUtilities/src,src_L1Trigger_L1THGCalUtilities_src,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),))
 endif
 ifeq ($(strip $(L1TriggerL1THGCalUtilitiesPlugins_calotruth)),)
 L1TriggerL1THGCalUtilitiesPlugins_calotruth := self/src/L1Trigger/L1THGCalUtilities/plugins
@@ -188,6 +85,108 @@ endif
 ALL_COMMONRULES += src_L1Trigger_L1CaloTrigger_plugins
 src_L1Trigger_L1CaloTrigger_plugins_parent := L1Trigger/L1CaloTrigger
 src_L1Trigger_L1CaloTrigger_plugins_INIT_FUNC += $$(eval $$(call CommonProductRules,src_L1Trigger_L1CaloTrigger_plugins,src/L1Trigger/L1CaloTrigger/plugins,PLUGINS))
+ifeq ($(strip $(L1Trigger/L1THGCal)),)
+ALL_COMMONRULES += src_L1Trigger_L1THGCal_src
+src_L1Trigger_L1THGCal_src_parent := L1Trigger/L1THGCal
+src_L1Trigger_L1THGCal_src_INIT_FUNC := $$(eval $$(call CommonProductRules,src_L1Trigger_L1THGCal_src,src/L1Trigger/L1THGCal/src,LIBRARY))
+L1TriggerL1THGCal := self/L1Trigger/L1THGCal
+L1Trigger/L1THGCal := L1TriggerL1THGCal
+L1TriggerL1THGCal_files := $(patsubst src/L1Trigger/L1THGCal/src/%,%,$(wildcard $(foreach dir,src/L1Trigger/L1THGCal/src src/L1Trigger/L1THGCal/src/backend src/L1Trigger/L1THGCal/src/backend_emulator src/L1Trigger/L1THGCal/src/concentrator src/L1Trigger/L1THGCal/src/veryfrontend,$(foreach ext,$(SRC_FILES_SUFFIXES),$(dir)/*.$(ext)))))
+L1TriggerL1THGCal_BuildFile    := $(WORKINGDIR)/cache/bf/src/L1Trigger/L1THGCal/BuildFile
+L1TriggerL1THGCal_LOC_USE := self cmssw  DataFormats/L1Trigger FWCore/Framework Geometry/HGCalGeometry Geometry/CaloTopology Geometry/Records DataFormats/L1THGCal SimDataFormats/CaloTest PhysicsTools/TensorFlow HeterogeneousCore/SonicTriton CommonTools/Utils json 
+L1TriggerL1THGCal_EX_LIB   := L1TriggerL1THGCal
+L1TriggerL1THGCal_EX_USE   := $(foreach d,$(L1TriggerL1THGCal_LOC_USE),$(if $($(d)_EX_FLAGS_NO_RECURSIVE_EXPORT),,$d))
+L1TriggerL1THGCal_PACKAGE := self/src/L1Trigger/L1THGCal/src
+ALL_PRODS += L1TriggerL1THGCal
+L1TriggerL1THGCal_CLASS := LIBRARY
+L1Trigger/L1THGCal_forbigobj+=L1TriggerL1THGCal
+L1TriggerL1THGCal_INIT_FUNC        += $$(eval $$(call Library,L1TriggerL1THGCal,src/L1Trigger/L1THGCal/src,src_L1Trigger_L1THGCal_src,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),))
+endif
+ifeq ($(strip $(L1TriggerL1THGCalPlugins)),)
+L1TriggerL1THGCalPlugins := self/src/L1Trigger/L1THGCal/plugins
+PLUGINS:=yes
+L1TriggerL1THGCalPlugins_files := $(patsubst src/L1Trigger/L1THGCal/plugins/%,%,$(foreach file,*.cc,$(eval xfile:=$(wildcard src/L1Trigger/L1THGCal/plugins/$(file)))$(if $(xfile),$(xfile),$(warning No such file exists: src/L1Trigger/L1THGCal/plugins/$(file). Please fix src/L1Trigger/L1THGCal/plugins/BuildFile.))))
+L1TriggerL1THGCalPlugins_BuildFile    := $(WORKINGDIR)/cache/bf/src/L1Trigger/L1THGCal/plugins/BuildFile
+L1TriggerL1THGCalPlugins_LOC_USE := self cmssw  L1Trigger/L1THGCal Geometry/Records 
+L1TriggerL1THGCalPlugins_PRE_INIT_FUNC += $$(eval $$(call edmPlugin,L1TriggerL1THGCalPlugins,L1TriggerL1THGCalPlugins,$(SCRAMSTORENAME_LIB),src/L1Trigger/L1THGCal/plugins))
+L1TriggerL1THGCalPlugins_PACKAGE := self/src/L1Trigger/L1THGCal/plugins
+ALL_PRODS += L1TriggerL1THGCalPlugins
+L1Trigger/L1THGCal_forbigobj+=L1TriggerL1THGCalPlugins
+L1TriggerL1THGCalPlugins_INIT_FUNC        += $$(eval $$(call Library,L1TriggerL1THGCalPlugins,src/L1Trigger/L1THGCal/plugins,src_L1Trigger_L1THGCal_plugins,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),edm))
+L1TriggerL1THGCalPlugins_CLASS := LIBRARY
+else
+$(eval $(call MultipleWarningMsg,L1TriggerL1THGCalPlugins,src/L1Trigger/L1THGCal/plugins))
+endif
+ifeq ($(strip $(L1TriggerL1THGCalPlugins_fe_be)),)
+L1TriggerL1THGCalPlugins_fe_be := self/src/L1Trigger/L1THGCal/plugins
+PLUGINS:=yes
+L1TriggerL1THGCalPlugins_fe_be_files := $(patsubst src/L1Trigger/L1THGCal/plugins/%,%,$(foreach file,veryfrontend/*.cc concentrator/*.cc backend/*.cc,$(eval xfile:=$(wildcard src/L1Trigger/L1THGCal/plugins/$(file)))$(if $(xfile),$(xfile),$(warning No such file exists: src/L1Trigger/L1THGCal/plugins/$(file). Please fix src/L1Trigger/L1THGCal/plugins/BuildFile.))))
+L1TriggerL1THGCalPlugins_fe_be_BuildFile    := $(WORKINGDIR)/cache/bf/src/L1Trigger/L1THGCal/plugins/BuildFile
+L1TriggerL1THGCalPlugins_fe_be_LOC_USE := self cmssw  CommonTools/MVAUtils Geometry/Records rootcore L1Trigger/L1THGCal DataFormats/L1THGCal 
+L1TriggerL1THGCalPlugins_fe_be_PRE_INIT_FUNC += $$(eval $$(call edmPlugin,L1TriggerL1THGCalPlugins_fe_be,L1TriggerL1THGCalPlugins_fe_be,$(SCRAMSTORENAME_LIB),src/L1Trigger/L1THGCal/plugins))
+L1TriggerL1THGCalPlugins_fe_be_PACKAGE := self/src/L1Trigger/L1THGCal/plugins
+ALL_PRODS += L1TriggerL1THGCalPlugins_fe_be
+L1Trigger/L1THGCal_forbigobj+=L1TriggerL1THGCalPlugins_fe_be
+L1TriggerL1THGCalPlugins_fe_be_INIT_FUNC        += $$(eval $$(call Library,L1TriggerL1THGCalPlugins_fe_be,src/L1Trigger/L1THGCal/plugins,src_L1Trigger_L1THGCal_plugins,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),edm))
+L1TriggerL1THGCalPlugins_fe_be_CLASS := LIBRARY
+else
+$(eval $(call MultipleWarningMsg,L1TriggerL1THGCalPlugins_fe_be,src/L1Trigger/L1THGCal/plugins))
+endif
+ifeq ($(strip $(L1TriggerL1THGCalPlugins_geometries)),)
+L1TriggerL1THGCalPlugins_geometries := self/src/L1Trigger/L1THGCal/plugins
+PLUGINS:=yes
+L1TriggerL1THGCalPlugins_geometries_files := $(patsubst src/L1Trigger/L1THGCal/plugins/%,%,$(foreach file,geometries/*.cc,$(eval xfile:=$(wildcard src/L1Trigger/L1THGCal/plugins/$(file)))$(if $(xfile),$(xfile),$(warning No such file exists: src/L1Trigger/L1THGCal/plugins/$(file). Please fix src/L1Trigger/L1THGCal/plugins/BuildFile.))))
+L1TriggerL1THGCalPlugins_geometries_BuildFile    := $(WORKINGDIR)/cache/bf/src/L1Trigger/L1THGCal/plugins/BuildFile
+L1TriggerL1THGCalPlugins_geometries_LOC_USE := self cmssw  L1Trigger/L1THGCal tbb 
+L1TriggerL1THGCalPlugins_geometries_PRE_INIT_FUNC += $$(eval $$(call edmPlugin,L1TriggerL1THGCalPlugins_geometries,L1TriggerL1THGCalPlugins_geometries,$(SCRAMSTORENAME_LIB),src/L1Trigger/L1THGCal/plugins))
+L1TriggerL1THGCalPlugins_geometries_PACKAGE := self/src/L1Trigger/L1THGCal/plugins
+ALL_PRODS += L1TriggerL1THGCalPlugins_geometries
+L1Trigger/L1THGCal_forbigobj+=L1TriggerL1THGCalPlugins_geometries
+L1TriggerL1THGCalPlugins_geometries_INIT_FUNC        += $$(eval $$(call Library,L1TriggerL1THGCalPlugins_geometries,src/L1Trigger/L1THGCal/plugins,src_L1Trigger_L1THGCal_plugins,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),edm))
+L1TriggerL1THGCalPlugins_geometries_CLASS := LIBRARY
+else
+$(eval $(call MultipleWarningMsg,L1TriggerL1THGCalPlugins_geometries,src/L1Trigger/L1THGCal/plugins))
+endif
+ALL_COMMONRULES += src_L1Trigger_L1THGCal_plugins
+src_L1Trigger_L1THGCal_plugins_parent := L1Trigger/L1THGCal
+src_L1Trigger_L1THGCal_plugins_INIT_FUNC += $$(eval $$(call CommonProductRules,src_L1Trigger_L1THGCal_plugins,src/L1Trigger/L1THGCal/plugins,PLUGINS))
+ifeq ($(strip $(DataFormats/ForwardDetId)),)
+ALL_COMMONRULES += src_DataFormats_ForwardDetId_src
+src_DataFormats_ForwardDetId_src_parent := DataFormats/ForwardDetId
+src_DataFormats_ForwardDetId_src_INIT_FUNC := $$(eval $$(call CommonProductRules,src_DataFormats_ForwardDetId_src,src/DataFormats/ForwardDetId/src,LIBRARY))
+DataFormatsForwardDetId := self/DataFormats/ForwardDetId
+DataFormats/ForwardDetId := DataFormatsForwardDetId
+DataFormatsForwardDetId_files := $(patsubst src/DataFormats/ForwardDetId/src/%,%,$(wildcard $(foreach dir,src/DataFormats/ForwardDetId/src ,$(foreach ext,$(SRC_FILES_SUFFIXES),$(dir)/*.$(ext)))))
+DataFormatsForwardDetId_BuildFile    := $(WORKINGDIR)/cache/bf/src/DataFormats/ForwardDetId/BuildFile
+DataFormatsForwardDetId_LOC_USE := self cmssw  FWCore/Utilities DataFormats/DetId 
+DataFormatsForwardDetId_LCGDICTS  := x 
+DataFormatsForwardDetId_PRE_INIT_FUNC += $$(eval $$(call LCGDict,DataFormatsForwardDetId,src/DataFormats/ForwardDetId/src/classes.h,src/DataFormats/ForwardDetId/src/classes_def.xml,$(SCRAMSTORENAME_LIB),$(GENREFLEX_ARGS) $(root_EX_FLAGS_GENREFLEX_FAILES_ON_WARNS)))
+DataFormatsForwardDetId_EX_LIB   := DataFormatsForwardDetId
+DataFormatsForwardDetId_EX_USE   := $(foreach d,$(DataFormatsForwardDetId_LOC_USE),$(if $($(d)_EX_FLAGS_NO_RECURSIVE_EXPORT),,$d))
+DataFormatsForwardDetId_PACKAGE := self/src/DataFormats/ForwardDetId/src
+ALL_PRODS += DataFormatsForwardDetId
+DataFormatsForwardDetId_CLASS := LIBRARY
+DataFormats/ForwardDetId_forbigobj+=DataFormatsForwardDetId
+DataFormatsForwardDetId_INIT_FUNC        += $$(eval $$(call Library,DataFormatsForwardDetId,src/DataFormats/ForwardDetId/src,src_DataFormats_ForwardDetId_src,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),))
+endif
+ifeq ($(strip $(FireworksCaloPlugins)),)
+FireworksCaloPlugins := self/src/Fireworks/Calo/plugins
+PLUGINS:=yes
+FireworksCaloPlugins_files := $(patsubst src/Fireworks/Calo/plugins/%,%,$(foreach file,*.cc,$(eval xfile:=$(wildcard src/Fireworks/Calo/plugins/$(file)))$(if $(xfile),$(xfile),$(warning No such file exists: src/Fireworks/Calo/plugins/$(file). Please fix src/Fireworks/Calo/plugins/BuildFile.))))
+FireworksCaloPlugins_BuildFile    := $(WORKINGDIR)/cache/bf/src/Fireworks/Calo/plugins/BuildFile
+FireworksCaloPlugins_LOC_USE := self cmssw  DataFormats/CaloRecHit DataFormats/CaloTowers DataFormats/EcalDetId DataFormats/EcalRecHit DataFormats/HcalRecHit DataFormats/JetReco DataFormats/L1Trigger DataFormats/L1THGCal DataFormats/METReco DataFormats/TauReco DataFormats/TrackReco DataFormats/HGCalReco Fireworks/Calo Fireworks/Core rootinteractive rooteve rootrgl rootgeom 
+FireworksCaloPlugins_PRE_INIT_FUNC += $$(eval $$(call edmPlugin,FireworksCaloPlugins,FireworksCaloPlugins,$(SCRAMSTORENAME_LIB),src/Fireworks/Calo/plugins))
+FireworksCaloPlugins_PACKAGE := self/src/Fireworks/Calo/plugins
+ALL_PRODS += FireworksCaloPlugins
+Fireworks/Calo_forbigobj+=FireworksCaloPlugins
+FireworksCaloPlugins_INIT_FUNC        += $$(eval $$(call Library,FireworksCaloPlugins,src/Fireworks/Calo/plugins,src_Fireworks_Calo_plugins,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),edm))
+FireworksCaloPlugins_CLASS := LIBRARY
+else
+$(eval $(call MultipleWarningMsg,FireworksCaloPlugins,src/Fireworks/Calo/plugins))
+endif
+ALL_COMMONRULES += src_Fireworks_Calo_plugins
+src_Fireworks_Calo_plugins_parent := Fireworks/Calo
+src_Fireworks_Calo_plugins_INIT_FUNC += $$(eval $$(call CommonProductRules,src_Fireworks_Calo_plugins,src/Fireworks/Calo/plugins,PLUGINS))
 ifeq ($(strip $(L1Trigger/Phase2L1ParticleFlow)),)
 ALL_COMMONRULES += src_L1Trigger_Phase2L1ParticleFlow_src
 src_L1Trigger_Phase2L1ParticleFlow_src_parent := L1Trigger/Phase2L1ParticleFlow
@@ -205,24 +204,23 @@ L1TriggerPhase2L1ParticleFlow_CLASS := LIBRARY
 L1Trigger/Phase2L1ParticleFlow_forbigobj+=L1TriggerPhase2L1ParticleFlow
 L1TriggerPhase2L1ParticleFlow_INIT_FUNC        += $$(eval $$(call Library,L1TriggerPhase2L1ParticleFlow,src/L1Trigger/Phase2L1ParticleFlow/src,src_L1Trigger_Phase2L1ParticleFlow_src,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),))
 endif
-ifeq ($(strip $(L1TriggerPhase2L1ParticleFlowAuto)),)
-L1TriggerPhase2L1ParticleFlowAuto := self/src/L1Trigger/Phase2L1ParticleFlow/plugins
-PLUGINS:=yes
-L1TriggerPhase2L1ParticleFlowAuto_files := $(patsubst src/L1Trigger/Phase2L1ParticleFlow/plugins/%,%,$(wildcard $(foreach dir,src/L1Trigger/Phase2L1ParticleFlow/plugins ,$(foreach ext,$(SRC_FILES_SUFFIXES),$(dir)/*.$(ext)))))
-L1TriggerPhase2L1ParticleFlowAuto_BuildFile    := $(WORKINGDIR)/cache/bf/src/L1Trigger/Phase2L1ParticleFlow/plugins/BuildFile
-L1TriggerPhase2L1ParticleFlowAuto_LOC_USE := self cmssw  CalibFormats/CaloTPG DataFormats/HcalDetId DataFormats/HcalDigi DataFormats/JetReco FWCore/PluginManager L1Trigger/L1TCalorimeter L1Trigger/Phase2L1ParticleFlow MagneticField/Engine MagneticField/Records CommonTools/Utils CommonTools/UtilAlgos 
-L1TriggerPhase2L1ParticleFlowAuto_PRE_INIT_FUNC += $$(eval $$(call edmPlugin,L1TriggerPhase2L1ParticleFlowAuto,L1TriggerPhase2L1ParticleFlowAuto,$(SCRAMSTORENAME_LIB),src/L1Trigger/Phase2L1ParticleFlow/plugins))
-L1TriggerPhase2L1ParticleFlowAuto_PACKAGE := self/src/L1Trigger/Phase2L1ParticleFlow/plugins
-ALL_PRODS += L1TriggerPhase2L1ParticleFlowAuto
-L1Trigger/Phase2L1ParticleFlow_forbigobj+=L1TriggerPhase2L1ParticleFlowAuto
-L1TriggerPhase2L1ParticleFlowAuto_INIT_FUNC        += $$(eval $$(call Library,L1TriggerPhase2L1ParticleFlowAuto,src/L1Trigger/Phase2L1ParticleFlow/plugins,src_L1Trigger_Phase2L1ParticleFlow_plugins,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),edm))
-L1TriggerPhase2L1ParticleFlowAuto_CLASS := LIBRARY
-else
-$(eval $(call MultipleWarningMsg,L1TriggerPhase2L1ParticleFlowAuto,src/L1Trigger/Phase2L1ParticleFlow/plugins))
+ifeq ($(strip $(Fireworks/Calo)),)
+ALL_COMMONRULES += src_Fireworks_Calo_src
+src_Fireworks_Calo_src_parent := Fireworks/Calo
+src_Fireworks_Calo_src_INIT_FUNC := $$(eval $$(call CommonProductRules,src_Fireworks_Calo_src,src/Fireworks/Calo/src,LIBRARY))
+FireworksCalo := self/Fireworks/Calo
+Fireworks/Calo := FireworksCalo
+FireworksCalo_files := $(patsubst src/Fireworks/Calo/src/%,%,$(wildcard $(foreach dir,src/Fireworks/Calo/src ,$(foreach ext,$(SRC_FILES_SUFFIXES),$(dir)/*.$(ext)))))
+FireworksCalo_BuildFile    := $(WORKINGDIR)/cache/bf/src/Fireworks/Calo/BuildFile
+FireworksCalo_LOC_USE := self cmssw  DataFormats/CaloRecHit DataFormats/CaloTowers DataFormats/DetId DataFormats/EcalDetId DataFormats/EcalRecHit DataFormats/EgammaReco DataFormats/FWLite DataFormats/JetReco DataFormats/TauReco Fireworks/Core Fireworks/Tracks boost_system rootgpad rootphysics rooteve rootgeom 
+FireworksCalo_EX_LIB   := FireworksCalo
+FireworksCalo_EX_USE   := $(foreach d,$(FireworksCalo_LOC_USE),$(if $($(d)_EX_FLAGS_NO_RECURSIVE_EXPORT),,$d))
+FireworksCalo_PACKAGE := self/src/Fireworks/Calo/src
+ALL_PRODS += FireworksCalo
+FireworksCalo_CLASS := LIBRARY
+Fireworks/Calo_forbigobj+=FireworksCalo
+FireworksCalo_INIT_FUNC        += $$(eval $$(call Library,FireworksCalo,src/Fireworks/Calo/src,src_Fireworks_Calo_src,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),))
 endif
-ALL_COMMONRULES += src_L1Trigger_Phase2L1ParticleFlow_plugins
-src_L1Trigger_Phase2L1ParticleFlow_plugins_parent := L1Trigger/Phase2L1ParticleFlow
-src_L1Trigger_Phase2L1ParticleFlow_plugins_INIT_FUNC += $$(eval $$(call CommonProductRules,src_L1Trigger_Phase2L1ParticleFlow_plugins,src/L1Trigger/Phase2L1ParticleFlow/plugins,PLUGINS))
 ifeq ($(strip $(Validation/HGCalValidation)),)
 ALL_COMMONRULES += src_Validation_HGCalValidation_src
 src_Validation_HGCalValidation_src_parent := Validation/HGCalValidation
@@ -242,6 +240,24 @@ ValidationHGCalValidation_CLASS := LIBRARY
 Validation/HGCalValidation_forbigobj+=ValidationHGCalValidation
 ValidationHGCalValidation_INIT_FUNC        += $$(eval $$(call Library,ValidationHGCalValidation,src/Validation/HGCalValidation/src,src_Validation_HGCalValidation_src,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),))
 endif
+ifeq ($(strip $(L1TriggerPhase2L1ParticleFlowAuto)),)
+L1TriggerPhase2L1ParticleFlowAuto := self/src/L1Trigger/Phase2L1ParticleFlow/plugins
+PLUGINS:=yes
+L1TriggerPhase2L1ParticleFlowAuto_files := $(patsubst src/L1Trigger/Phase2L1ParticleFlow/plugins/%,%,$(wildcard $(foreach dir,src/L1Trigger/Phase2L1ParticleFlow/plugins ,$(foreach ext,$(SRC_FILES_SUFFIXES),$(dir)/*.$(ext)))))
+L1TriggerPhase2L1ParticleFlowAuto_BuildFile    := $(WORKINGDIR)/cache/bf/src/L1Trigger/Phase2L1ParticleFlow/plugins/BuildFile
+L1TriggerPhase2L1ParticleFlowAuto_LOC_USE := self cmssw  CalibFormats/CaloTPG DataFormats/HcalDetId DataFormats/HcalDigi DataFormats/JetReco FWCore/PluginManager L1Trigger/L1TCalorimeter L1Trigger/Phase2L1ParticleFlow MagneticField/Engine MagneticField/Records CommonTools/Utils CommonTools/UtilAlgos 
+L1TriggerPhase2L1ParticleFlowAuto_PRE_INIT_FUNC += $$(eval $$(call edmPlugin,L1TriggerPhase2L1ParticleFlowAuto,L1TriggerPhase2L1ParticleFlowAuto,$(SCRAMSTORENAME_LIB),src/L1Trigger/Phase2L1ParticleFlow/plugins))
+L1TriggerPhase2L1ParticleFlowAuto_PACKAGE := self/src/L1Trigger/Phase2L1ParticleFlow/plugins
+ALL_PRODS += L1TriggerPhase2L1ParticleFlowAuto
+L1Trigger/Phase2L1ParticleFlow_forbigobj+=L1TriggerPhase2L1ParticleFlowAuto
+L1TriggerPhase2L1ParticleFlowAuto_INIT_FUNC        += $$(eval $$(call Library,L1TriggerPhase2L1ParticleFlowAuto,src/L1Trigger/Phase2L1ParticleFlow/plugins,src_L1Trigger_Phase2L1ParticleFlow_plugins,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),edm))
+L1TriggerPhase2L1ParticleFlowAuto_CLASS := LIBRARY
+else
+$(eval $(call MultipleWarningMsg,L1TriggerPhase2L1ParticleFlowAuto,src/L1Trigger/Phase2L1ParticleFlow/plugins))
+endif
+ALL_COMMONRULES += src_L1Trigger_Phase2L1ParticleFlow_plugins
+src_L1Trigger_Phase2L1ParticleFlow_plugins_parent := L1Trigger/Phase2L1ParticleFlow
+src_L1Trigger_Phase2L1ParticleFlow_plugins_INIT_FUNC += $$(eval $$(call CommonProductRules,src_L1Trigger_Phase2L1ParticleFlow_plugins,src/L1Trigger/Phase2L1ParticleFlow/plugins,PLUGINS))
 ifeq ($(strip $(ValidationHGCalValidationAuto)),)
 ValidationHGCalValidationAuto := self/src/Validation/HGCalValidation/plugins
 PLUGINS:=yes
@@ -276,38 +292,22 @@ DQMOfflineL1Trigger_CLASS := LIBRARY
 DQMOffline/L1Trigger_forbigobj+=DQMOfflineL1Trigger
 DQMOfflineL1Trigger_INIT_FUNC        += $$(eval $$(call Library,DQMOfflineL1Trigger,src/DQMOffline/L1Trigger/src,src_DQMOffline_L1Trigger_src,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),edm))
 endif
-ifeq ($(strip $(Fireworks/Calo)),)
-ALL_COMMONRULES += src_Fireworks_Calo_src
-src_Fireworks_Calo_src_parent := Fireworks/Calo
-src_Fireworks_Calo_src_INIT_FUNC := $$(eval $$(call CommonProductRules,src_Fireworks_Calo_src,src/Fireworks/Calo/src,LIBRARY))
-FireworksCalo := self/Fireworks/Calo
-Fireworks/Calo := FireworksCalo
-FireworksCalo_files := $(patsubst src/Fireworks/Calo/src/%,%,$(wildcard $(foreach dir,src/Fireworks/Calo/src ,$(foreach ext,$(SRC_FILES_SUFFIXES),$(dir)/*.$(ext)))))
-FireworksCalo_BuildFile    := $(WORKINGDIR)/cache/bf/src/Fireworks/Calo/BuildFile
-FireworksCalo_LOC_USE := self cmssw  DataFormats/CaloRecHit DataFormats/CaloTowers DataFormats/DetId DataFormats/EcalDetId DataFormats/EcalRecHit DataFormats/EgammaReco DataFormats/FWLite DataFormats/JetReco DataFormats/TauReco Fireworks/Core Fireworks/Tracks boost_system rootgpad rootphysics rooteve rootgeom 
-FireworksCalo_EX_LIB   := FireworksCalo
-FireworksCalo_EX_USE   := $(foreach d,$(FireworksCalo_LOC_USE),$(if $($(d)_EX_FLAGS_NO_RECURSIVE_EXPORT),,$d))
-FireworksCalo_PACKAGE := self/src/Fireworks/Calo/src
-ALL_PRODS += FireworksCalo
-FireworksCalo_CLASS := LIBRARY
-Fireworks/Calo_forbigobj+=FireworksCalo
-FireworksCalo_INIT_FUNC        += $$(eval $$(call Library,FireworksCalo,src/Fireworks/Calo/src,src_Fireworks_Calo_src,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),))
+ifeq ($(strip $(L1Trigger/L1THGCalUtilities)),)
+ALL_COMMONRULES += src_L1Trigger_L1THGCalUtilities_src
+src_L1Trigger_L1THGCalUtilities_src_parent := L1Trigger/L1THGCalUtilities
+src_L1Trigger_L1THGCalUtilities_src_INIT_FUNC := $$(eval $$(call CommonProductRules,src_L1Trigger_L1THGCalUtilities_src,src/L1Trigger/L1THGCalUtilities/src,LIBRARY))
+L1TriggerL1THGCalUtilities := self/L1Trigger/L1THGCalUtilities
+L1Trigger/L1THGCalUtilities := L1TriggerL1THGCalUtilities
+L1TriggerL1THGCalUtilities_files := $(patsubst src/L1Trigger/L1THGCalUtilities/src/%,%,$(wildcard $(foreach dir,src/L1Trigger/L1THGCalUtilities/src ,$(foreach ext,$(SRC_FILES_SUFFIXES),$(dir)/*.$(ext)))))
+L1TriggerL1THGCalUtilities_BuildFile    := $(WORKINGDIR)/cache/bf/src/L1Trigger/L1THGCalUtilities/BuildFile
+L1TriggerL1THGCalUtilities_LOC_USE := self cmssw  FWCore/Framework DataFormats/Common DataFormats/L1THGCal FWCore/ParameterSet FWCore/PluginManager SimDataFormats/CaloAnalysis 
+L1TriggerL1THGCalUtilities_LCGDICTS  := x 
+L1TriggerL1THGCalUtilities_PRE_INIT_FUNC += $$(eval $$(call LCGDict,L1TriggerL1THGCalUtilities,src/L1Trigger/L1THGCalUtilities/src/classes.h,src/L1Trigger/L1THGCalUtilities/src/classes_def.xml,$(SCRAMSTORENAME_LIB),$(GENREFLEX_ARGS) $(root_EX_FLAGS_GENREFLEX_FAILES_ON_WARNS)))
+L1TriggerL1THGCalUtilities_EX_LIB   := L1TriggerL1THGCalUtilities
+L1TriggerL1THGCalUtilities_EX_USE   := $(foreach d,$(L1TriggerL1THGCalUtilities_LOC_USE),$(if $($(d)_EX_FLAGS_NO_RECURSIVE_EXPORT),,$d))
+L1TriggerL1THGCalUtilities_PACKAGE := self/src/L1Trigger/L1THGCalUtilities/src
+ALL_PRODS += L1TriggerL1THGCalUtilities
+L1TriggerL1THGCalUtilities_CLASS := LIBRARY
+L1Trigger/L1THGCalUtilities_forbigobj+=L1TriggerL1THGCalUtilities
+L1TriggerL1THGCalUtilities_INIT_FUNC        += $$(eval $$(call Library,L1TriggerL1THGCalUtilities,src/L1Trigger/L1THGCalUtilities/src,src_L1Trigger_L1THGCalUtilities_src,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),))
 endif
-ifeq ($(strip $(FireworksCaloPlugins)),)
-FireworksCaloPlugins := self/src/Fireworks/Calo/plugins
-PLUGINS:=yes
-FireworksCaloPlugins_files := $(patsubst src/Fireworks/Calo/plugins/%,%,$(foreach file,*.cc,$(eval xfile:=$(wildcard src/Fireworks/Calo/plugins/$(file)))$(if $(xfile),$(xfile),$(warning No such file exists: src/Fireworks/Calo/plugins/$(file). Please fix src/Fireworks/Calo/plugins/BuildFile.))))
-FireworksCaloPlugins_BuildFile    := $(WORKINGDIR)/cache/bf/src/Fireworks/Calo/plugins/BuildFile
-FireworksCaloPlugins_LOC_USE := self cmssw  DataFormats/CaloRecHit DataFormats/CaloTowers DataFormats/EcalDetId DataFormats/EcalRecHit DataFormats/HcalRecHit DataFormats/JetReco DataFormats/L1Trigger DataFormats/L1THGCal DataFormats/METReco DataFormats/TauReco DataFormats/TrackReco DataFormats/HGCalReco Fireworks/Calo Fireworks/Core rootinteractive rooteve rootrgl rootgeom 
-FireworksCaloPlugins_PRE_INIT_FUNC += $$(eval $$(call edmPlugin,FireworksCaloPlugins,FireworksCaloPlugins,$(SCRAMSTORENAME_LIB),src/Fireworks/Calo/plugins))
-FireworksCaloPlugins_PACKAGE := self/src/Fireworks/Calo/plugins
-ALL_PRODS += FireworksCaloPlugins
-Fireworks/Calo_forbigobj+=FireworksCaloPlugins
-FireworksCaloPlugins_INIT_FUNC        += $$(eval $$(call Library,FireworksCaloPlugins,src/Fireworks/Calo/plugins,src_Fireworks_Calo_plugins,$(SCRAMSTORENAME_BIN),,$(SCRAMSTORENAME_LIB),$(SCRAMSTORENAME_LOGS),edm))
-FireworksCaloPlugins_CLASS := LIBRARY
-else
-$(eval $(call MultipleWarningMsg,FireworksCaloPlugins,src/Fireworks/Calo/plugins))
-endif
-ALL_COMMONRULES += src_Fireworks_Calo_plugins
-src_Fireworks_Calo_plugins_parent := Fireworks/Calo
-src_Fireworks_Calo_plugins_INIT_FUNC += $$(eval $$(call CommonProductRules,src_Fireworks_Calo_plugins,src/Fireworks/Calo/plugins,PLUGINS))
