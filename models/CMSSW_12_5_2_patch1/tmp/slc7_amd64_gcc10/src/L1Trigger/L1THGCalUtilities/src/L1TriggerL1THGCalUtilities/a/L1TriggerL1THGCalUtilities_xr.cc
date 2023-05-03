@@ -323,8 +323,8 @@ namespace {
 0
     };
     static const char* includePaths[] = {
-"/uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src",
-"/uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/poison",
+"/work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src",
+"/work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/poison",
 "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src",
 "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/external/pcre/8.43-28d54724578a9006cf0dca75629374e3/include",
 "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/external/bz2lib/1.0.6-86270889250d9cb8193d1963706a39cb/include",
@@ -338,7 +338,7 @@ namespace {
 "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/external/OpenBLAS/0.3.15-04b535a741a2f5a1f273ae128823f6ef/include",
 "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/external/tinyxml2/6.2.0-b4ef6e4242045ed0c243ef457f5b32a5/include",
 "/cvmfs/cms.cern.ch/slc7_amd64_gcc10/lcg/root/6.24.07-a31cbfc28a0c92b3c007615905b5b9b2/include/",
-"/uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/",
+"/work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/",
 0
     };
     static const char* fwdDeclCode = R"DICTFWDDCLS(

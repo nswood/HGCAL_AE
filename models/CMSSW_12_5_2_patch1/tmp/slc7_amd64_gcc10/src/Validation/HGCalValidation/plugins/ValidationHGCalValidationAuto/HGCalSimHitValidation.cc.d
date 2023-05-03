@@ -1,10 +1,10 @@
 tmp/slc7_amd64_gcc10/src/Validation/HGCalValidation/plugins/ValidationHGCalValidationAuto/HGCalSimHitValidation.cc.o: \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/Validation/HGCalValidation/plugins/HGCalSimHitValidation.cc \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/ForwardSubdetector.h \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HGCalDetId.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/Validation/HGCalValidation/plugins/HGCalSimHitValidation.cc \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/ForwardSubdetector.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HGCalDetId.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DataFormats/DetId/interface/DetId.h \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HGCSiliconDetId.h \
- /uscms_data/d3/nswood/Notebooks/AE_Dev/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HGCScintillatorDetId.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HGCSiliconDetId.h \
+ /work/submit/nswood/HGCAL/models/CMSSW_12_5_2_patch1/src/DataFormats/ForwardDetId/interface/HGCScintillatorDetId.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DetectorDescription/Core/interface/DDCompactView.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DetectorDescription/Core/interface/DDRotationMatrix.h \
  /cvmfs/cms.cern.ch/slc7_amd64_gcc10/cms/cmssw-patch/CMSSW_12_5_2_patch1/src/DetectorDescription/Core/interface/DDTranslation.h \
