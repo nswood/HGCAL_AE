@@ -5,7 +5,7 @@ import postcmssw.ele
 import postcmssw.plot
 import numpy as np
 
-xs_l, namesECON, names2d, names3d = postcmssw.file_handling.get_nanoevents('ntuple.root', entry_stop=500)
+xs_l, namesECON, names2d, names3d = postcmssw.file_handling.get_nanoevents('models/CMSSW_12_5_2_patch1/src/ntuple.root', entry_stop=500)
 print("got xs")
 
 elecuts = {
