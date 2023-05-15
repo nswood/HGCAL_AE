@@ -5,11 +5,11 @@ import postcmssw.ele
 import postcmssw.plot
 import numpy as np
 
-xs_l, namesECON, names2d, names3d = postcmssw.file_handling.get_nanoevents('ntuple.root', entry_stop=500)
+xs_l, namesECON, names2d, names3d = postcmssw.file_handling.get_nanoevents('ntuple.root', entry_stop=5)
 print("got xs")
 
 elecuts = {
-  'eta' : (1.444, np.inf)
+  'eta' : (-np.inf, np.inf)
 }
 evtmask = postcmssw.ele.get_evtcut(xs_l[0], elecuts)
 xs_l = [xs[evtmask] for xs in xs_l]
