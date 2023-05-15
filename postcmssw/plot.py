@@ -8,13 +8,15 @@ xlabels = {
     'mipPt' : '$\Delta p_T$',
     'eta' : '$\Delta |\eta|$',
     'phi' : '$\Delta \phi$',
-    'dR' : '$\Delta R',
+    'dR' : '$\Delta R$',
+    'data' : '$\Delta Q$'
 }
 
 units = {
     'energy' : 'GeV',
     'mipPt' : 'MiPs',
     'prop' : '%',
+    'data' : 'ADC'
 }
 
 def get_diff(df0, df1, props, quantity='energy', cuts={}, prop=False):
@@ -73,6 +75,8 @@ def get_all_diffs(dfs_l, props, quantity='energy', cuts={}, baseline=0, prop=Fal
     return diffs, cutstring
 
 def hist(dfs_l, props, quantity='energy', cuts={}, baseline=0, names=None, prop=False, bins=100, logy=True, xlim = [-1, 1], fname='test.png'):
+    if quantity == 'data':
+        xlim = [-100, 100]
     labels = []
     for i in range(len(names)):
         if i==baseline:

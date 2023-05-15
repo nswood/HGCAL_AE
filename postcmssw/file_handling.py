@@ -51,7 +51,7 @@ def get_treenames(f):
     return treenames
 
 def get_fname(base, nameECON, name2d, name3d):
-    return os.path.join(base, "%s_%s_%s.pkl"%(nameECON, name2d, name3d))
+    return os.path.join(base, "%s_%s_%s.parquet"%(nameECON, name2d, name3d))
 
 def write_some_dfs(folder,
                    namesECON, names2d, names3d,
@@ -61,12 +61,12 @@ def write_some_dfs(folder,
         fname = get_fname(folder, namesECON[i], 
                                   names2d[i],
                                   names3d[i])
-        df_l[i].to_pickle(fname)
+        df_l[i].to_parquet(fname)
 
     if props is not None:
-        props.to_pickle(os.path.join(folder, 'props.pkl'))
+        props.to_parquet(os.path.join(folder, 'props.parquet'))
     if gen is not None:
-        gen.to_pickle(os.path.join(folder, 'gen.pkl'))
+        gen.to_parquet(os.path.join(folder, 'gen.parquet'))
 
 def write_all_dfs(folder, 
               namesECON, names2d, names3d,
@@ -98,7 +98,7 @@ def read_names(folder):
 
     files = os.listdir(os.path.join(folder, 'tcs'))
     for fname in files:
-        if fname == 'props.pkl' or fname == 'gen.pkl':
+        if fname == 'props.parquet' or fname == 'gen.parquet':
             continue
         splitted = fname[:-4].split('_')
         namesECON.append(splitted[0])
@@ -115,13 +115,13 @@ def read_some_dfs(folder,
                                   names3d[i])
         dfs_l.append(pd.read_pickle(fname))
 
-    propsname = os.path.join(folder, 'props.pkl')
+    propsname = os.path.join(folder, 'props.parquet')
     if os.path.exists(propsname):
         props = pd.read_pickle(propsname)
     else:
         props = None
 
-    genname = os.path.join(folder, 'gen.pkl')
+    genname = os.path.join(folder, 'gen.parquet')
     if os.path.exists(genname):
         gen = pd.read_pickle(genname)
     else:

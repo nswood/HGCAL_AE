@@ -3,10 +3,10 @@ import pandas as pd
 from .util import get_pivoted, pad_pivoted_l
 
 def get_waferid(tcs):
-    u = tcs.waferu
-    v = tcs.waferv
-    l = tcs.layer
-    z = tcs.zside
+    u = tcs['waferu']
+    v = tcs['waferv']
+    l = tcs['layer']
+    z = tcs['zside']
     return z * (l + 60*(u + 20) + 60*40*(v + 20))
 
 def group_by_wafer_l(tcs_l):
@@ -80,7 +80,7 @@ def pivoted_wafer_df(wafers, simE=False):
     Obviously, does not include the same padding
     See pivoted_wafer_df_l() for more docs
     '''
-    values = ['energy', 'x', 'y', 'z', 'eta', 'phi']
+    values = ['energy', 'x', 'y', 'z', 'eta', 'phi', 'mipPt', 'data']
     if simE:
         values.append('simenergy')
     ans = get_pivoted(wafers, values=values, columns='waferid')

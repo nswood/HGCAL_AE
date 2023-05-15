@@ -15,7 +15,7 @@ def get_pivoted(zipped, values=['E'], kind='event', columns='ID'):
     elif kind!='event':
         raise ValueError("Invalid kind in get_pivoted. Must be one of 'event', 'waferevent'")
     print("getting pivoted took %0.3f sec\n"%(time()-t0))
-    return df.pivot(kind, columns=columns, values=values).fillna(0)
+    return df.pivot(index=kind, columns=columns, values=values).fillna(0)
 
 def pad_pivoted_l(pivoted_l):
     #pad so that they all are compatible in numpy

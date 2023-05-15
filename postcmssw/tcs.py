@@ -1,6 +1,14 @@
 import awkward as ak
+from .wafer import get_waferid
 from .util import get_pivoted, pad_pivoted_l
 import pandas as pd
+
+waferfields = ['id', 'subdet', 'zside', 'layer', 
+               'waferu', 'waferv', 'wafertype', 
+               'cellu', 'cellv', 
+               'data', 'pt', 'mipPt', 
+               'energy', 'simenergy', 
+               'eta', 'phi', 'x', 'y', 'z'] 
 
 def get_sitcs_l(t_l):
     '''
@@ -15,9 +23,9 @@ def get_sitcs(t):
     @param: t [nanoevents] data from ntuple file
     @output: [awkward recordarray] silicon wafers
     '''
-    variables = ['id', 'subdet', 'zside', 'layer', 'waferu', 'waferv', 'wafertype', 'cellu', 'cellv', 'data', 'pt', 'mipPt', 'energy', 'simenergy', 'eta', 'phi', 'x', 'y', 'z', 'cluster_id', 'multicluster_id', 'multicluster_pt']
     mask = t.tc.subdet!=10
-    d = {var : t.tc[var][mask] for var in variables}
+    d = {var : t.tc[var][mask] for field in waferfields}
+    d['waferid'] = get_waferid(d)
     return ak.zip(d)
 
 def get_tc_properties(tcs):
@@ -26,11 +34,7 @@ def get_tc_properties(tcs):
         (type, subdet, layer, eta, phi)
     '''
     df = ak.to_pandas(tcs)
-    maxdf = df.pivot_table(index='id', aggfunc = 'max', values=['wafertype', 'subdet', 
-                                                                'layer', 'zside',
-                                                                'cellu', 'cellv',
-                                                                'waferu', 'waferv',
-                                                                'eta', 'phi'])
+    maxdf = df.pivot_table(index='id', aggfunc = 'max', values=waferfields)
     return maxdf
 
 def get_tc_properties_l(tcs_l):
@@ -64,7 +68,9 @@ def pivoted_tc_df(tcs, simE=False):
     Obviously, does not include the same padding
     See pivoted_tc_df_l() for more docs
     '''
-    values = ['energy', 'mipPt', 'data']
+    values = ['energy', 'mipPt', 'data', 'wafertype', 'subdet', 'layer',
+              'zside', 'waferu', 'waferv', 'cellu', 'cellv', 'waferid',
+              'eta', 'phi', 'x', 'y', 'z']
     if simE:
         values.append('simenergy')
     ans = get_pivoted(tcs, values=values, columns='id')

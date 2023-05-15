@@ -1,4 +1,5 @@
 import awkward as ak
+import pandas as pd
 import numpy as np
 from .util import cut_var
 
@@ -30,7 +31,7 @@ def get_genele(ne):
     elepos.index.name = 'event'
     eleneg.index.name = 'event'
 
-    return elepos.append(eleneg)
+    return pd.concat([elepos, eleneg], ignore_index = True)
 
 def get_recoele(ne):
     #treat each side separately
@@ -63,7 +64,7 @@ def get_recoele(ne):
     elepos.index.name = 'event'
     eleneg.index.name = 'event'
 
-    return elepos.append(eleneg)
+    return pd.concat([elepos, eleneg], ignore_index = True)
 
 def get_recoele_l(ne_l):
     ele_l = []
