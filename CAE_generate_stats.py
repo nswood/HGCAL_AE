@@ -3,6 +3,7 @@ import torch
 import os
 import matplotlib.pyplot as plt
 import AE_Stats
+from Naive_DAE import *
 
 from torch.autograd import Variable
 from torch.utils.data import Dataset, DataLoader, TensorDataset
@@ -17,11 +18,15 @@ def gen_batch_stats(model_path,data_path,dt_size = 2000):
     all_data =[]
     all_pred =[]
     for m in models:
-        model = torch.load(os.path.join(model_path,m)).to('cpu')
+        model = CVAE([48,250,150,16])
+        model.load_state_dict(torch.load(os.path.join(model_path,m)))
+        model.to('cpu')
         model.device = 'cpu'
+        model.encoder.device ='cpu'
+        model.decoder.device ='cpu'
         data = torch.load(os.path.join(data_path,m)).to('cpu')
         sum_tc = torch.unsqueeze(torch.sum(data[:,0:48],dim = 1),dim=1).to('cpu')
-        pred = model(data.to('cpu')[:,0:48],sum_tc)
+        pred = model(data[:,0:48].to('cpu'),sum_tc).to('cpu')
         performance.append([m, data, pred])
         if int(0.05*len(data))< dt_size:
             dt_size = int(0.05*len(data))
