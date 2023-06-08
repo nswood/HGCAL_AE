@@ -9,32 +9,32 @@ xlabels = {
     'eta' : '$\Delta |\eta|$',
     'phi' : '$\Delta \phi$',
     'dR' : '$\Delta R$',
-    'data' : '$\Delta Q$'
+    'data' : '$\Delta Q$',
 }
+xlabels['pt'] = xlabels['mipPt']
 
 units = {
     'energy' : 'GeV',
     'mipPt' : 'MiPs',
     'prop' : '%',
-    'data' : 'ADC'
+    'data' : 'ADC',
 }
+units['pt'] = units['energy']
 
-def get_diff(df0, df1, props, quantity='energy', cuts={}, prop=False):
-    first = df0[quantity].to_numpy()
-    second = df1[quantity].to_numpy()
-    diff = second-first
-    if prop:
-        diff = diff/first
-
-    mask = np.ones_like(diff, dtype=bool)
+def get_cut(df0, df1, cuts={}):
+    mask = np.ones_like(df0.eta.to_numpy(), dtype=bool)
     cutstring = ''
     for key in cuts.keys():
+        if cuts[key][0] == -np.inf and cuts[key][1] == np.inf:
+            continue;
+
         if key[-1] == '0':
             varname = xlabels[key[:-1]]+"$_0$"
         elif key[-1] == '1':
             varname = xlabels[key[:-1]]+"$_1$"
         else:
-            varname = xlabels[key]
+            raise ValueError("Need to specify for each cut variable which side to apply it to")
+
         varname = '$' + varname[8:]
         if cutstring != '':
             cutstring+='; '
@@ -42,16 +42,10 @@ def get_diff(df0, df1, props, quantity='energy', cuts={}, prop=False):
             cutstring += '%s == %g'%(varname, cuts[key][0])
         elif cuts[key][1] == np.inf:
             cutstring += '%g < %s'%(cuts[key][0], varname)
+        elif cuts[key][0] == -np.inf:
+            cutstring += '%s <= %g'%(varname, cuts[key][1])
         else:
             cutstring += '%g < %s <= %g'%(cuts[key][0], varname, cuts[key][1]) 
-
-        if key[-1] != '0' and key[-1] != '1':
-            var = props[key].loc[df0[quantity].columns]
-            if key[:-1] == 'eta':
-                var = np.abs(var)
-            varmask = cut_var(var, cuts[key])
-            mask[:,~varmask] = False
-            continue
 
         if key[-1] == '0':
             var = df0[key[:-1]].to_numpy()
@@ -59,33 +53,42 @@ def get_diff(df0, df1, props, quantity='energy', cuts={}, prop=False):
             var = df1[key[:-1]].to_numpy()
         if key[:-1] == 'eta':
             var = np.abs(var)
+
         varmask = cut_var(var, cuts[key])
         mask = mask & varmask
 
-    return diff[mask], mask, cutstring
+    return mask, cutstring
 
-def get_all_diffs(dfs_l, props, quantity='energy', cuts={}, baseline=0, prop=False):
-    diffs = []
-    mask = None
-    for i in range(len(dfs_l)):
-        if i==baseline:
-            continue
-        diff, _, cutstring = get_diff(dfs_l[baseline], dfs_l[i], props, quantity, cuts, prop)
-        diffs.append(diff)
-    return diffs, cutstring
-
-def hist(dfs_l, props, quantity='energy', cuts={}, baseline=0, names=None, prop=False, bins=100, logy=True, xlim = [-1, 1], fname='test.png'):
+def hist(dfs_l, quantity='energy', cuts={}, baseline=0, names=None, prop=False, bins=100, logy=True, xlim = [-1, 1], fname='test.png', chainmask=None):
     if quantity == 'data':
         xlim = [-100, 100]
-    labels = []
-    for i in range(len(names)):
-        if i==baseline:
-            continue
-        labels.append(names[i])
+
+    qs = [df[quantity].to_numpy() for df in dfs_l]
+    q0 = qs[baseline]
+    if prop:
+        dqs = [100*(q - q0)/q0 for q in qs]
+    else:
+        dqs = [q - q0 for q in qs]
+        
+
+    masks = []
+    for i in range(len(qs)):
+        mask, cutstring = get_cut(dfs_l[baseline], dfs_l[i], cuts)
+        masks.append(mask)
+
+    print(cutstring)
+    dqs = [dq[mask] for dq,mask in zip(dqs, masks)]
+
+    if chainmask is None:
+        chainmask = [True] * len(dfs_l)
+
+    chainmask[baseline] = False
+
+    xs = [dqs[i] for i in range(len(dfs_l)) if chainmask[i]]
+    labels = [names[i] for i in range(len(dfs_l)) if chainmask[i]]
 
     plt.clf()  
-    diffs, cutstring = get_all_diffs(dfs_l, props, quantity, cuts, baseline, prop)
-    plt.hist(diffs, bins=bins, histtype='step', label=labels, range=xlim)
+    plt.hist(xs, bins=bins, histtype='step', label=labels, range=xlim)
 
     if names is not None:
         plt.legend()
@@ -103,15 +106,12 @@ def hist(dfs_l, props, quantity='energy', cuts={}, baseline=0, names=None, prop=
 
     plt.savefig(fname, bbox_inches='tight', format='png')
 
-def hist2d(df0, df1, props, quantity='energy', xquantity='energy', cuts={}, names=None, prop=False, logx=False, xbins=10, ybins=10):
+def hist2d(df0, df1, quantity='energy', xquantity='energy', cuts={}, names=None, prop=False, logx=False, xbins=10, ybins=10):
     plt.clf()
-    diff, mask = get_diff(df0, df1, props, quantity, cuts, prop)
+    diff, mask = get_diff(df0, df1, quantity, cuts, prop)
     dfcols = np.unique(df0.columns.get_level_values(0))
-    if xquantity in dfcols:
-        xval = df0[xquantity].to_numpy()[mask]
-    else:
-        xval = props[xquantity].loc[df0[quantity].columns].to_numpy()
-        xval = np.repeat(xval[None, :], mask.shape[0], axis=0)[mask]
+
+    xval = df0[xquantity].to_numpy()[mask]
     if xquantity == 'eta':
         xval = np.abs(xval)
 

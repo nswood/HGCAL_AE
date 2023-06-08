@@ -1,6 +1,15 @@
 import awkward as ak
 import pandas as pd
 from .util import get_pivoted, pad_pivoted_l
+import pyarrow as pa
+
+waferfields_sums = ['energy', 'simenergy', 'data', 'mipPt', 'pt']
+waferfields_firsts = ['waferid', 'subdet', 'zside', 'layer', 
+                      'waferu', 'waferv', 'wafertype']
+waferfields_means = ['x', 'y', 'z', 'eta', 'phi']
+waferfields_simmeans = ['simx', 'simy', 'simz', 'simeta', 'simphi']
+waferfields = waferfields_sums + waferfields_firsts \
+            + waferfields_means + waferfields_simmeans
 
 def get_waferid(tcs):
     u = tcs['waferu']
@@ -39,12 +48,11 @@ def make_wafers(tcs):
     '''
     grouped = group_by_wafer(tcs)
     props = {}
-    for var in ['energy', 'simenergy', 'data', 'mipPt']:
+    for var in waferfields_sums:
         props[var] = ak.sum(grouped[var], axis=-1)
-    for var in ['waferid', 'subdet', 'zside', 'layer', 'waferu', 'waferv', 'wafertype']:
+    for var in waferfields_firsts:
         props[var] = ak.firsts(grouped[var], axis=-1)
-
-    for var in ['x', 'y', 'z', 'eta', 'phi']:
+    for var in waferfields_means:
         props[var] = ak.sum(grouped[var] * grouped.energy / props['energy'], axis=-1)
         props['sim'+var] = ak.sum(grouped[var] * grouped.simenergy / props['simenergy'], axis=-1)
     
@@ -74,24 +82,24 @@ def pivoted_wafer_df_l(wafers_l):
     return pad_pivoted_l(result)
 
 
-def pivoted_wafer_df(wafers, simE=False):
+def pivoted_wafer_df(wafers):
     '''
     Single chain version of pivoted_wafer_df_l()
     Obviously, does not include the same padding
     See pivoted_wafer_df_l() for more docs
     '''
-    values = ['energy', 'x', 'y', 'z', 'eta', 'phi', 'mipPt', 'data']
-    if simE:
-        values.append('simenergy')
+    values = waferfields
     ans = get_pivoted(wafers, values=values, columns='waferid')
     ans.index.name = 'event'
     return ans
 
-def get_wafer_properties(wafers):
-    df = ak.to_pandas(wafers).droplevel(1)
-    maxdf = df.pivot_table(index='waferid', values=['layer', 'subdet', 'wafertype'])
-    return maxdf
+def pa_waferdf(waferdf):
+    ans = {}
+    for field in waferfields:
+        if field=='waferid':
+            continue
+        ans[field] = waferdf[field].to_numpy().flatten()
+    return pa.Table.from_pydict(ans)
 
-def get_wafer_properties_l(wafers_l):
-    dfs = [get_wafer_properties(wafers) for wafers in wafers_l]
-    return pd.concat(dfs).groupby(level=0).max()
+def pa_waferdf_l(waferdf_l):
+    return [pa_waferdf(waferdf) for waferdf in waferdf_l]

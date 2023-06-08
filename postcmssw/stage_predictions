@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+import os.path
+import os
+
+import argparse
+from argparse import RawTextHelpFormatter
+
+import numpy as np
+
+parser = argparse.ArgumentParser(description='Stage cmsRun across multiple slurm jobs', formatter_class = RawTextHelpFormatter)
+parser.add_argument('config', type=str)
+parser.add_argument('infolder', type=str)
+parser.add_argument('outfolder', type=str)
+parser.add_argument('--time', type=str, default='100:00:00')
+parser.add_argument('--ntasks', type=int, default=16)
+parser.add_argument('--mem', type=int, default=50)
+parser.add_argument('--partition', type=str, default='submit,submit-gpu,submit-gpu1080')
+parser.add_argument('--jobname', type=str, default="'crab'")
+parser.add_argument('--nfiles', type=int, default=10)
+parser.add_argument('--queuelimit', type=int, default=50)
+
+args = parser.parse_args()
+
+infiles = os.listdir(args.infolder)
+infiles = infiles[:args.nfiles]
+outfiles = ['ntuple_%09d.root'%i for i in range(len(infiles))]
+
+with open("infiles.txt", 'w') as f:
+    for i in range(len(infiles)):
+        f.write("file://"+os.path.join(args.infolder, infiles[i]))
+        f.write('\n')
+
+with open("submit_array.slurm", 'w') as f:
+    f.write("#!/bin/bash -l\n")
+    f.write("#SBATCH --time=%s\n"%args.time)
+    f.write("#SBATCH --cpus-per-task=%d\n"%args.ntasks)
+    f.write("#SBATCH --mem=%dg\n"%args.mem)
+    f.write("#SBATCH --partition=%s\n"%args.partition)
+    f.write("#SBATCH --mail-type=ALL\n")
+    f.write("#SBATCH --mail-user=ssrothman.slurm.spam@gmail.com\n")
+    f.write("#SBATCH --job-name=\"%s\"\n"%args.jobname)
+    f.write("#SBATCH --output=\"%A_%a.slurmout\"\n")
+    f.write("#SBATCH --array=0-%d%%%d\n"%(len(infiles)-1, args.queuelimit))
+    f.write("\n")
+    f.write("declare -a infiles\n")
+    f.write('mapfile -t infiles < infiles.txt\n')
+    f.write('\n')
+    f.write('infile=${infiles[SLURM_ARRAY_TASK_ID]}\n')
+    f.write('outfile=%s/ntuple_${SLURM_ARRAY_TASK_ID}.root\n'%args.outfolder)
+    f.write("\n")
+    f.write("cmsRun %s inputFiles=$infile outputFile=$outfile nProc=%d\n"%(args.config, args.ntasks))

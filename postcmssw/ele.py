@@ -1,7 +1,10 @@
 import awkward as ak
 import pandas as pd
 import numpy as np
+import pyarrow as pa
 from .util import cut_var
+
+elefields = ['energy', 'eta', 'phi', 'pt']
 
 def get_evtcut(ne, cuts={'eta' : (1.57, np.inf)}):
     mask = np.ones(len(ne), dtype=bool)
@@ -15,9 +18,8 @@ def get_evtcut(ne, cuts={'eta' : (1.57, np.inf)}):
 
 def get_genele(ne):
     #treat each side separately
-    fields = ['eta', 'phi', 'pt', 'energy', 'charge'] 
     eles = {}
-    for field in fields:
+    for field in elefields:
         eles[field] = ak.Array(ak.to_numpy(ne.gen[field], allow_missing=False))
     eles = ak.zip(eles)
 
@@ -35,9 +37,8 @@ def get_genele(ne):
 
 def get_recoele(ne):
     #treat each side separately
-    fields = ['energy', 'eta', 'phi', 'pt']
     eles = {}
-    for field in fields:
+    for field in elefields:
         eles[field] = ne.cl3d[field]
     eles = ak.zip(eles)
 
@@ -71,3 +72,12 @@ def get_recoele_l(ne_l):
     for ne in ne_l:
         ele_l.append(get_recoele(ne))
     return ele_l
+
+def pa_eledf(eledf):
+    ans = {}
+    for field in elefields:
+        ans[field] = eledf[field].to_numpy().flatten()
+    return pa.Table.from_pydict(ans)
+
+def pa_eledf_l(eledf_l):
+    return [pa_eledf(eledf) for eledf in eledf_l]
