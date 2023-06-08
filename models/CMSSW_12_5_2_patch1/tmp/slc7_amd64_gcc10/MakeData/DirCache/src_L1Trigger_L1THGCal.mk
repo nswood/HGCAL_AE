@@ -1,2 +1,2 @@
 ALL_PACKAGES += L1Trigger/L1THGCal
-subdirs_src_L1Trigger_L1THGCal := src_L1Trigger_L1THGCal_plugins src_L1Trigger_L1THGCal_python src_L1Trigger_L1THGCal_src src_L1Trigger_L1THGCal_test
+subdirs_src_L1Trigger_L1THGCal := src_L1Trigger_L1THGCal_plugins src_L1Trigger_L1THGCal_python src_L1Trigger_L1THGCal_test src_L1Trigger_L1THGCal_src

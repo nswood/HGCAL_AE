@@ -1,2 +1,2 @@
 ALL_PACKAGES += DQMOffline/L1Trigger
-subdirs_src_DQMOffline_L1Trigger := src_DQMOffline_L1Trigger_python src_DQMOffline_L1Trigger_src src_DQMOffline_L1Trigger_test
+subdirs_src_DQMOffline_L1Trigger := src_DQMOffline_L1Trigger_python src_DQMOffline_L1Trigger_test src_DQMOffline_L1Trigger_src

@@ -1,7 +1,9 @@
 import awkward as ak
 import pandas as pd
 import numpy as np
-import pyarrow as pa
+
+import pandas as pd
+
 from .util import cut_var
 
 elefields = ['energy', 'eta', 'phi', 'pt']
@@ -65,7 +67,11 @@ def get_recoele(ne):
     elepos.index.name = 'event'
     eleneg.index.name = 'event'
 
-    return pd.concat([elepos, eleneg], ignore_index = True)
+
+    
+
+    return pd.concat([elepos, eleneg], ignore_index = True) 
+
 
 def get_recoele_l(ne_l):
     ele_l = []

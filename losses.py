@@ -29,21 +29,22 @@ def std_error(data,pred):
 # def AE_MSE_avg(data,pred):
 #     return torch.mean(torch.max(torch.ones(len(data)),1.5-0.12*((torch.sum(data[:,0:48]**2,dim=1)**0.5)-5.2586)**2)*(torch.sum((data-pred)**2,dim=1)))
 
-def combo_loss(data,pred,epoch,mean,std,alpha = 0.2,cut = 5):
-    error = AE_MSE(data,pred)
-    tele_loss = torch.mean(telescopeMSE2(data[:,0:48], pred))
+def combo_loss(data,pred,epoch,mean,std,alpha = 0.2,cut = 5,device = 'cuda'):
+#     error = AE_MSE(data,pred)
+    error = new_loss(data,pred,epoch,mean,std)
+    tele_loss = torch.mean(telescopeMSE2(data[:,0:48], pred,device = device))
     if epoch < cut:
-        return error + 0.25*tele_loss
+        return error + 0.15*tele_loss
     else:
         #Energy Conservation
-        sum_dt, sum_pred = torch.sum(data, dim=1), torch.sum(pred,dim=1)
-        sum_error = torch.mean(torch.norm(sum_dt-sum_pred))
+#         sum_dt, sum_pred = torch.sum(data, dim=1), torch.sum(pred,dim=1)
+#         sum_error = torch.mean(torch.norm(sum_dt-sum_pred))
         
     
-        return  error + 0.25*tele_loss #+ 0.01*sum_error*np.min([(epoch-cut)/cut,1])
+        return  error + 0.15*tele_loss #+ 0.01*sum_error*np.min([(epoch-cut)/cut,1])
 
     
-def new_loss(data,pred,epoch,mean,std,alpha = 0.2,cut = 50):
+def new_loss(data,pred,epoch,mean,std,alpha = 0.2,cut = 500):
     #Reconstruction
     error = dif_weighted_AE_MSE(data,pred,alpha = alpha)
     if epoch < cut:

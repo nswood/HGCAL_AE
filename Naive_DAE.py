@@ -1,9 +1,366 @@
-"""Implementation of a Deep Autoencoder"""
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+class CVAE_conv(nn.Module):
 
+    def __init__(self,layers,latent_dims = 16, with_loc=False,device = 'cuda'):
+        """Initialize the DAE
+
+        Parameters
+        ----------
+        layers: list[int]
+            the number of dimensions in each layer of the DAE
+
+        """
+        
+        super(CVAE_conv, self).__init__()
+        encoders = []
+        decoders = []
+
+        prev_layer = layers[0]
+        i = 0
+        for layer in layers[1:]:
+            
+            encoders.append(
+                nn.Linear(in_features=prev_layer, out_features=layer))
+            encoders.append(
+                nn.ReLU())
+            if i == len(layers)-2:
+                decoders.append(
+                    nn.Linear(in_features=17, out_features=prev_layer))
+            else:
+                 decoders.append(
+                    nn.Linear(in_features=layer, out_features=prev_layer))
+            decoders.append(
+                nn.ReLU())
+            i = i +1
+            prev_layer = layer
+        
+        #Encoders pre conditioning
+        self.encoders = nn.ModuleList(encoders).to(device)
+        self.decoders = nn.ModuleList(reversed(decoders))
+        self.decoders = nn.ModuleList(reversed([nn.ReLU()]+decoders)).to(device)
+        self.unflatten = nn.Unflatten(dim=1, unflattened_size=(4,6, 6)).to(device)
+        self.device = device
+        
+        #post conditioning
+        self.linear_enc = nn.Linear(layers[-1]+1,layers[-1]).to(device)
+        self.linear_mean = nn.Linear(layers[-1],latent_dims).to(device)
+        self.linear_sig = nn.Linear(layers[-1],latent_dims).to(device)
+        
+        
+        
+        self.N       = torch.distributions.Normal(0, 1)
+        self.N.loc   = self.N.loc 
+        self.N.scale = self.N.scale
+        self.kl = 0
+        
+        self.conv1 = nn.Conv2d(1, 4, 3).to(device)
+        self.decoder_conv = nn.ConvTranspose2d(4, 1, 3).to(device)
+        
+    def forward(self, x,c):
+        """Forward step
+        
+        Parameters
+        ----------
+        x: Tensor
+            input tensor
+        
+        Returns
+        -------
+        Tensor
+            a reconstructed version of x
+
+        """
+        x_encoded = self.encode(x,c)
+        x_reconstructed = self.decode(x_encoded,c)
+        return x_reconstructed
+
+    def encode(self, x,c):
+        """Encode the input x
+        
+        Parameters
+        ----------
+        x: Tensor
+            input to encode
+        x: Tensor
+            conditional data
+        
+        Returns
+        -------
+        Tensor
+            encoded input
+
+        """
+        x = F.relu(self.conv1(x))
+        x = torch.flatten(x, start_dim=1)
+        
+        for i, enc in enumerate(self.encoders):
+            if i == len(self.encoders) - 1:
+                x = enc(x)
+            else:
+                x = enc(x)
+        x = torch.hstack((x,c))
+        x = F.relu(self.linear_enc(x))
+        
+        mu =  self.linear_mean(x) #Mean in the gaussian space
+        sigma = torch.exp(self.linear_sig(x)).to(device) #sigma in the space
+        z = mu + sigma*self.N.sample(mu.shape).to(device) #smear 
+        self.kl = (sigma**2 + mu**2 - torch.log(sigma) - 1/2).sum()
+        return z
+    
+    def decode(self, x,c):
+        """Decode the representation x
+        
+        Parameters
+        ----------
+        x: Tensor
+            input to decode
+        
+        Returns
+        -------
+        Tensor
+            decoded input
+
+        """
+        x = torch.hstack((x,c))
+        #x = torch.unsqueeze(x,dim=1)
+        
+        for dec in self.decoders:
+            x = dec(x)
+        
+        
+        
+        x = self.unflatten(x)
+        
+        x =F.relu(self.decoder_conv(x))
+        
+        return x
+
+class CVAE(nn.Module):
+
+    def __init__(self,layers,latent_dims = 16, with_loc=False,device = 'cuda'):
+        """Initialize the DAE
+
+        Parameters
+        ----------
+        layers: list[int]
+            the number of dimensions in each layer of the DAE
+
+        """
+        
+        super(CVAE, self).__init__()
+        encoders = []
+        decoders = []
+        self.device = device
+        prev_layer = layers[0]
+        i = 0
+        for layer in layers[1:]:
+            
+            encoders.append(
+                nn.Linear(in_features=prev_layer, out_features=layer))
+            encoders.append(
+                nn.ReLU())
+            if i == len(layers)-2:
+                decoders.append(
+                    nn.Linear(in_features=17, out_features=prev_layer))
+            else:
+                 decoders.append(
+                    nn.Linear(in_features=layer, out_features=prev_layer))
+            decoders.append(
+                nn.ReLU())
+            i = i +1
+            prev_layer = layer
+        
+        #Encoders pre conditioning
+        self.encoders = nn.ModuleList(encoders)
+        self.decoders = nn.ModuleList(reversed(decoders))
+        self.decoders = nn.ModuleList(reversed([nn.ReLU()]+decoders))
+        
+        
+        #post conditioning
+        self.linear_enc = nn.Linear(layers[-1]+1,layers[-1])
+        self.linear_mean = nn.Linear(layers[-1],latent_dims)
+        self.linear_sig = nn.Linear(layers[-1],latent_dims)
+        
+        self.N       = torch.distributions.Normal(0, 1)
+        self.N.loc   = self.N.loc 
+        self.N.scale = self.N.scale
+        self.kl = 0
+        
+        self.decoder_latent = nn.Sequential(
+            nn.Linear(latent_dims+1, layers[-1]),
+            nn.ReLU(True)
+        )
+        
+        
+    def forward(self, x,c):
+        """Forward step
+        
+        Parameters
+        ----------
+        x: Tensor
+            input tensor
+        
+        Returns
+        -------
+        Tensor
+            a reconstructed version of x
+
+        """
+        x_encoded = self.encode(x,c)
+        x_reconstructed = self.decode(x_encoded,c)
+        return x_reconstructed
+
+    def encode(self, x,c):
+        """Encode the input x
+        
+        Parameters
+        ----------
+        x: Tensor
+            input to encode
+        x: Tensor
+            conditional data
+        
+        Returns
+        -------
+        Tensor
+            encoded input
+
+        """
+        
+        for i, enc in enumerate(self.encoders):
+            if i == len(self.encoders) - 1:
+                x = enc(x)
+            else:
+                x = enc(x)
+
+        
+        mu =  self.linear_mean(x) #Mean in the gaussian space
+        sigma = torch.exp(self.linear_sig(x)) #sigma in the space
+        z = mu + sigma*self.N.sample(mu.shape).to(self.device) #smear 
+        self.kl = torch.sum((sigma**2 + mu**2 - torch.log(sigma) - 1/2),dim=1).mean()
+        return z
+    
+    def decode(self, x,c):
+        """Decode the representation x
+        
+        Parameters
+        ----------
+        x: Tensor
+            input to decode
+        
+        Returns
+        -------
+        Tensor
+            decoded input
+
+        """
+        x = torch.hstack([x,c])
+        for dec in self.decoders:
+            x = dec(x)
+        return x
+
+class CAE(nn.Module):
+
+    def __init__(self, layers,with_loc=False):
+        """Initialize the DAE
+
+        Parameters
+        ----------
+        layers: list[int]
+            the number of dimensions in each layer of the DAE
+
+        """
+        super(CAE, self).__init__()
+        encoders = []
+        decoders = []
+
+        prev_layer = layers[0]
+        i = 0
+        for layer in layers[1:]:
+            
+            encoders.append(
+                nn.Linear(in_features=prev_layer, out_features=layer))
+            encoders.append(
+                nn.ReLU())
+            if i == len(layers)-2:
+                decoders.append(
+                    nn.Linear(in_features=layer+1, out_features=prev_layer))
+            else:
+                 decoders.append(
+                    nn.Linear(in_features=layer, out_features=prev_layer))
+            decoders.append(
+                nn.ReLU())
+            i = i +1
+            prev_layer = layer
+            
+        self.encoders = nn.ModuleList(encoders)
+        self.decoders = nn.ModuleList(reversed(decoders))
+        self.decoders = nn.ModuleList(reversed([nn.ReLU()]+decoders))
+       
+    def forward(self, x,c):
+        """Forward step
+        
+        Parameters
+        ----------
+        x: Tensor
+            input tensor
+        
+        Returns
+        -------
+        Tensor
+            a reconstructed version of x
+
+        """
+        x_encoded = self.encode(x)
+        x_reconstructed = self.decode(x_encoded,c)
+        return x_reconstructed
+
+    def encode(self, x):
+        """Encode the input x
+        
+        Parameters
+        ----------
+        x: Tensor
+            input to encode
+        x: Tensor
+            conditional data
+        
+        Returns
+        -------
+        Tensor
+            encoded input
+
+        """
+        
+        for i, enc in enumerate(self.encoders):
+            if i == len(self.encoders) - 1:
+                x = enc(x)
+            else:
+                x = enc(x)
+        return x
+    
+    def decode(self, x,c):
+        """Decode the representation x
+        
+        Parameters
+        ----------
+        x: Tensor
+            input to decode
+        
+        Returns
+        -------
+        Tensor
+            decoded input
+
+        """
+        x = torch.hstack([x,c])
+        for dec in self.decoders:
+            x = dec(x)
+        return x
 
 
 class DAE(nn.Module):

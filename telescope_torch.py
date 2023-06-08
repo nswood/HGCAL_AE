@@ -133,16 +133,16 @@ def telescopeMSE663(y_true,y_pred):
 remap_8x8 = [ 4, 12, 20, 28,  5, 13, 21, 29,  6, 14, 22, 30,  7, 15, 23, 31, 
               24, 25, 26, 27, 16, 17, 18, 19,  8,  9, 10, 11,  0,  1,  2,  3, 
               59, 51, 43, 35, 58, 50, 42, 34, 57, 49, 41, 33, 56, 48, 40, 32]
-remap_8x8_matrix = np.zeros(48*64,dtype=np.float32).reshape((64,48))
+remap_8x8_matrix = torch.tensor(np.zeros(48*64,dtype=np.float32).reshape((64,48))).to('cuda')
 
 for i in range(48): 
     remap_8x8_matrix[remap_8x8[i],i] = 1
 
 def telescopeMSE8x8(y_true,y_pred):
-    return telescopeMSE2(torch.matmul(K.reshape(y_true,(-1,64)),remap_8x8_matrix),
-                         torch.matmul(K.reshape(y_pred,(-1,64)),remap_8x8_matrix))
+    return telescopeMSE2(torch.matmul(torch.reshape(y_true,(-1,64)),remap_8x8_matrix),
+                         torch.matmul(torch.reshape(y_pred,(-1,64)),remap_8x8_matrix))
 
-def telescopeMSE2(y_true, y_pred):
+def telescopeMSE2(y_true, y_pred,device = 'cuda'):
     y_true = y_true.type(y_pred.dtype)
 
     # TC-level MSE
@@ -152,16 +152,16 @@ def telescopeMSE2(y_true, y_pred):
     lossTC1 = torch.mean(torch.square(y_true_rs - y_pred_rs) * torch.max(y_pred_rs, y_true_rs), dim=-1)
 
     # map TCs to 2x2 supercells and compute MSE
-    y_pred_36 = torch.matmul(y_pred_rs, torch_Remap_48_36.to('cuda'))
-    y_true_36 = torch.matmul(y_true_rs, torch_Remap_48_36.to('cuda'))
+    y_pred_36 = torch.matmul(y_pred_rs, torch_Remap_48_36.to(device))
+    y_true_36 = torch.matmul(y_true_rs, torch_Remap_48_36.to(device))
     # lossTC2 = torch.mean(torch.square(y_true_12 - y_pred_12), dim=(-1))
     lossTC2 = torch.mean(torch.square(y_true_36 - y_pred_36) * torch.maximum(y_pred_36, y_true_36) * torch_Weights_48_36, dim=(-1))
   
     # map 2x2 supercells to 4x4 supercells and compute MSE
-    y_pred_12 = torch.matmul(y_pred_rs, torch_Remap_48_12.to('cuda'))
-    y_true_12 = torch.matmul(y_true_rs, torch_Remap_48_12.to('cuda'))
-    y_pred_3 = torch.matmul(y_pred_12, torch_Remap_12_3.to('cuda'))
-    y_true_3 = torch.matmul(y_true_12, torch_Remap_12_3.to('cuda'))
+    y_pred_12 = torch.matmul(y_pred_rs, torch_Remap_48_12.to(device))
+    y_true_12 = torch.matmul(y_true_rs, torch_Remap_48_12.to(device))
+    y_pred_3 = torch.matmul(y_pred_12, torch_Remap_12_3.to(device))
+    y_true_3 = torch.matmul(y_true_12, torch_Remap_12_3.to(device))
     # lossTC3 = torch.mean(torch.square(y_true_3 - y_pred_3), dim=(-1))
     lossTC3 = torch.mean(torch.square(y_true_3 - y_pred_3) * torch.maximum(y_pred_3, y_true_3), dim=(-1))
 

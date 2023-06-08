@@ -1,3 +1,3 @@
 ALL_SUBSYSTEMS+=L1Trigger
-subdirs_src_L1Trigger = src_L1Trigger_L1THGCal src_L1Trigger_L1THGCalUtilities src_L1Trigger_L1CaloTrigger src_L1Trigger_Phase2L1ParticleFlow
+subdirs_src_L1Trigger = src_L1Trigger_L1THGCalUtilities src_L1Trigger_L1THGCal src_L1Trigger_L1CaloTrigger src_L1Trigger_Phase2L1ParticleFlow
 subdirs_src += src_L1Trigger
